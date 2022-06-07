@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class H3Text extends StatelessWidget {
-  const H3Text({
+class H4Text extends StatelessWidget {
+  const H4Text({
     Key? key,
     required this.text,
     required this.bold,
@@ -15,7 +15,7 @@ class H3Text extends StatelessWidget {
     return Text(
       text,
       style: TextStyle(
-        fontSize: 16.0,
+        fontSize: 12.0,
         fontFamily: "poppins",
         fontWeight: bold ? FontWeight.w500 : FontWeight.normal,
         color: Colors.black,

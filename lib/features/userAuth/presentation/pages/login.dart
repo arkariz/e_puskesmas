@@ -1,12 +1,12 @@
+import 'package:e_puskesmas/core/routes/app_pages.dart';
 import 'package:e_puskesmas/core/themes/theme_constant.dart';
 import 'package:e_puskesmas/core/widgets/custom_button.dart';
-import 'package:e_puskesmas/core/widgets/custom_textfield.dart';
-import 'package:e_puskesmas/core/widgets/h1_text.dart';
-import 'package:e_puskesmas/core/widgets/h2_text.dart';
-import 'package:e_puskesmas/features/userAuth/presentation/widgets/background_image.dart';
-import 'package:e_puskesmas/features/userAuth/presentation/widgets/landing_text.dart';
-import 'package:e_puskesmas/features/userAuth/presentation/widgets/login_form.dart';
+import 'package:e_puskesmas/features/userAuth/presentation/pages/register.dart';
+import 'package:e_puskesmas/features/userAuth/presentation/widgets/login/background_image.dart';
+import 'package:e_puskesmas/features/userAuth/presentation/widgets/login/landing_text.dart';
+import 'package:e_puskesmas/features/userAuth/presentation/widgets/login/login_form.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key? key}) : super(key: key);
@@ -54,7 +54,9 @@ class _LoginPageState extends State<LoginPage> {
                 size: size,
                 buttonWidth: 0.85,
                 label: "Masuk",
-                onPressed: () {},
+                onPressed: () {
+                  Get.toNamed(Routes.HOME);
+                },
               ),
               const SizedBox(height: kLabelPadding),
               Row(
@@ -62,7 +64,9 @@ class _LoginPageState extends State<LoginPage> {
                 children: [
                   const Text("Belum memiliki akun?"),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.toNamed(Routes.REGISTER);
+                    },
                     child: const Text("Daftar"),
                   ),
                 ],

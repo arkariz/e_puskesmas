@@ -1,5 +1,5 @@
 import 'package:e_puskesmas/core/themes/theme_constant.dart';
-import 'package:e_puskesmas/core/widgets/h3_text.dart';
+import 'package:e_puskesmas/core/widgets/h4_text.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextField extends StatefulWidget {
@@ -10,7 +10,7 @@ class CustomTextField extends StatefulWidget {
     required this.size,
     this.icon,
     required this.label,
-    required this.type,
+    this.type,
     this.maxLines,
     this.suffixIcon,
     this.onPressed,
@@ -24,7 +24,7 @@ class CustomTextField extends StatefulWidget {
   final Icon? suffixIcon;
   final String label;
   final String hint;
-  final TextInputType type;
+  final TextInputType? type;
   final int? maxLines;
   final VoidCallback? onPressed;
 
@@ -38,14 +38,14 @@ class _CustomTextFieldState extends State<CustomTextField> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        H3Text(text: widget.label, bold: false),
+        H4Text(text: widget.label, bold: false),
         Padding(
           padding: const EdgeInsets.only(bottom: kDefaultPadding, top: kLabelPadding),
           child: SizedBox(
             width: widget.size.width * 0.85,
             child: TextFormField(
               maxLines: widget.maxLines,
-              keyboardType: widget.type,
+              keyboardType: widget.type ?? TextInputType.text,
               focusNode: widget.node,
               controller: widget.controller,
               validator: (value) {
@@ -59,7 +59,6 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 alignLabelWithHint: true,
                 prefixIcon: widget.icon,
                 labelStyle: const TextStyle(color: Colors.black38),
-                labelText: widget.label,
                 suffixIcon: widget.suffixIcon == null ? widget.suffixIcon : IconButton(onPressed: widget.onPressed ?? () {}, icon: widget.suffixIcon!),
                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: const BorderSide(color: Colors.black26)),
               ),

@@ -16,7 +16,8 @@ class H1Text extends StatelessWidget {
     return Text(
       text,
       style: TextStyle(
-        fontSize: 26.0,
+        fontSize: 24.0,
+        fontFamily: "poppins",
         fontWeight: bold ? FontWeight.w500 : FontWeight.normal,
         color: textColor ?? Colors.black,
       ),
