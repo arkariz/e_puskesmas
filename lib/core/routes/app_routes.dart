@@ -10,6 +10,7 @@ abstract class Routes {
   static const REGISTER = _Paths.REGISTER;
   static const REG_PASIEN_UMUM = _Paths.REG_PASIEN_UMUM;
   static const REG_PASIEN_BPJS = _Paths.REG_PASIEN_BPJS;
+  static const POLI_FORM = _Paths.POLI_FORM;
 }
 
 abstract class _Paths {
@@ -19,4 +20,6 @@ abstract class _Paths {
   static const REGISTER = '/register';
   static const REG_PASIEN_UMUM = '/regPasienUmum';
   static const REG_PASIEN_BPJS = '/regPasienBpjs';
+
+  static const POLI_FORM = '/poli_form';
 }

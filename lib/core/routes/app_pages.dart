@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:e_puskesmas/features/poli/presentation/pages/home_page.dart';
+import 'package:e_puskesmas/features/poli/presentation/pages/poli_form.dart';
 import 'package:e_puskesmas/features/userAuth/presentation/pages/login.dart';
 import 'package:e_puskesmas/features/userAuth/presentation/pages/register.dart';
 import 'package:e_puskesmas/features/userAuth/presentation/pages/register_bpjs_form.dart';
@@ -16,10 +18,10 @@ class AppPages {
       name: _Paths.LOGIN,
       page: () => LoginPage(),
     ),
-    // GetPage(
-    //   name: _Paths.HOME,
-    //   page: () => LoginPage(),
-    // ),
+    GetPage(
+      name: _Paths.HOME,
+      page: () => HomePage(),
+    ),
     GetPage(
       name: _Paths.REGISTER,
       page: () => RegisterPage(),
@@ -31,6 +33,10 @@ class AppPages {
     GetPage(
       name: _Paths.REG_PASIEN_UMUM,
       page: () => RegisterUmumForm(),
+    ),
+    GetPage(
+      name: _Paths.POLI_FORM,
+      page: () => PoliForm(),
     ),
   ];
 }

@@ -1,5 +1,6 @@
 import 'package:e_puskesmas/core/themes/theme_constant.dart';
 import 'package:e_puskesmas/core/widgets/h4_text.dart';
+import 'package:e_puskesmas/core/widgets/h5_text.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextField extends StatefulWidget {
@@ -38,7 +39,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        H4Text(text: widget.label, bold: false),
+        H5Text(text: widget.label, bold: false),
         Padding(
           padding: const EdgeInsets.only(bottom: kDefaultPadding, top: kLabelPadding),
           child: SizedBox(

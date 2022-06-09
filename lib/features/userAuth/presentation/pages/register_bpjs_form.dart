@@ -4,6 +4,7 @@ import 'package:e_puskesmas/core/widgets/custom_dropdown.dart';
 import 'package:e_puskesmas/core/widgets/custom_textfield.dart';
 import 'package:e_puskesmas/core/widgets/h3_text.dart';
 import 'package:e_puskesmas/core/widgets/h4_text.dart';
+import 'package:e_puskesmas/core/widgets/h5_text.dart';
 import 'package:e_puskesmas/features/userAuth/presentation/widgets/register_umum/header_register.dart';
 import 'package:flutter/material.dart';
 
@@ -140,21 +141,21 @@ class _RegisterBpjsFormState extends State<RegisterBpjsForm> {
                     ),
                     const H3Text(text: "Dokumen Pendukung", bold: true),
                     const SizedBox(height: kDefaultPadding),
-                    const H4Text(text: "Upload Foto Kartu Keluarga", bold: false),
+                    const H5Text(text: "Upload Foto Kartu Keluarga", bold: false),
                     Padding(
                       padding: const EdgeInsets.only(top: kLabelPadding, bottom: kDefaultPadding),
                       child: GestureDetector(
                         child: Image.asset("assets/icons/upload-icon.png"),
                       ),
                     ),
-                    const H4Text(text: "Upload Foto KTP", bold: false),
+                    const H5Text(text: "Upload Foto KTP", bold: false),
                     Padding(
                       padding: const EdgeInsets.only(top: kLabelPadding, bottom: kDefaultPadding),
                       child: GestureDetector(
                         child: Image.asset("assets/icons/upload-icon.png"),
                       ),
                     ),
-                    const H4Text(text: "Upload Foto BPJS", bold: false),
+                    const H5Text(text: "Upload Foto BPJS", bold: false),
                     Padding(
                       padding: const EdgeInsets.only(top: kLabelPadding, bottom: kDefaultPadding),
                       child: GestureDetector(

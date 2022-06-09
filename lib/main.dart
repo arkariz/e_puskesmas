@@ -13,12 +13,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Flutter Demo',
+      title: 'E-PUSKESMAS',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.teal,
       ),
-      initialRoute: Routes.LOGIN,
+      initialRoute: Routes.POLI_FORM,
       getPages: AppPages.routes,
     );
   }

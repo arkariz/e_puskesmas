@@ -1,6 +1,6 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:e_puskesmas/core/themes/theme_constant.dart';
-import 'package:e_puskesmas/core/widgets/h4_text.dart';
+import 'package:e_puskesmas/core/widgets/h5_text.dart';
 import 'package:flutter/material.dart';
 
 class CustomDropdown extends StatelessWidget {
@@ -8,12 +8,15 @@ class CustomDropdown extends StatelessWidget {
     Key? key,
     required this.size,
     required this.menuItems,
-    required this.onChangeValue, required this.label, required this.hint,
+    required this.onChangeValue,
+    required this.label,
+    required this.hint, this.icon,
   }) : super(key: key);
 
   final Size size;
   final String label;
   final String hint;
+  final IconData? icon;
   final List<String> menuItems;
   final void Function(String) onChangeValue;
 
@@ -22,7 +25,7 @@ class CustomDropdown extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        H4Text(text: label, bold: false),
+        H5Text(text: label, bold: false),
         Padding(
           padding: const EdgeInsets.only(bottom: kDefaultPadding, top: kLabelPadding),
           child: SizedBox(
@@ -40,8 +43,8 @@ class CustomDropdown extends StatelessWidget {
                 hint,
                 style: const TextStyle(fontSize: 14),
               ),
-              icon: const Icon(
-                Icons.arrow_drop_down,
+              icon: Icon(
+                icon ?? Icons.arrow_drop_down,
                 color: Colors.black45,
               ),
               iconSize: 30,
