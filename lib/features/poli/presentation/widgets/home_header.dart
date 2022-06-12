@@ -1,12 +1,16 @@
 import 'package:e_puskesmas/core/themes/theme_constant.dart';
-import 'package:e_puskesmas/core/widgets/h4_text.dart';
 import 'package:e_puskesmas/core/widgets/h5_text.dart';
 import 'package:flutter/material.dart';
 
 class HomeHeader extends StatelessWidget {
   const HomeHeader({
     Key? key,
+    required this.namaLengkap,
+    required this.jenisPasien,
   }) : super(key: key);
+
+  final String namaLengkap;
+  final String jenisPasien;
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +24,9 @@ class HomeHeader extends StatelessWidget {
           const SizedBox(width: kLabelPadding),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              H5Text(text: "Firman", bold: false),
-              H5Text(text: "Pasien Umum", bold: false),
+            children: [
+              H5Text(text: namaLengkap, bold: false),
+              H5Text(text: jenisPasien, bold: false),
             ],
           )
         ],

@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:e_puskesmas/features/poli/presentation/binding/home_binding.dart';
 import 'package:e_puskesmas/features/poli/presentation/pages/home_page.dart';
 import 'package:e_puskesmas/features/poli/presentation/pages/poli_form.dart';
 import 'package:e_puskesmas/features/userAuth/presentation/binding/auth_binding.dart';
@@ -23,6 +24,7 @@ class AppPages {
     GetPage(
       name: _Paths.HOME,
       page: () => HomePage(),
+      binding: HomeBinding(),
     ),
     GetPage(
       name: _Paths.REGISTER,

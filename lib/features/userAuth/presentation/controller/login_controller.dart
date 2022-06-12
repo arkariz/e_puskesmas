@@ -16,7 +16,6 @@ class LoginController extends GetxController {
       sandiController.value.text,
     );
 
-    print("tes ${pasien.last['nama_lengkap']}");
     Get.offNamed(Routes.HOME, arguments: pasien);
   }
 }

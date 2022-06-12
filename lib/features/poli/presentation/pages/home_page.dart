@@ -1,17 +1,14 @@
 import 'package:e_puskesmas/core/themes/theme_constant.dart';
 import 'package:e_puskesmas/core/widgets/h1_text.dart';
 import 'package:e_puskesmas/core/widgets/h4_text.dart';
+import 'package:e_puskesmas/features/poli/presentation/controller/home_controller.dart';
 import 'package:e_puskesmas/features/poli/presentation/widgets/home_header.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends GetView<HomeController> {
   const HomePage({Key? key}) : super(key: key);
 
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -28,7 +25,12 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const HomeHeader(),
+              Obx(
+                () => HomeHeader(
+                  namaLengkap: controller.namaLengkap.value,
+                  jenisPasien: controller.statusPasien.value,
+                ),
+              ),
               const SizedBox(height: kTopPadding),
               const H1Text(text: "Selamat Data", bold: true),
               const H4Text(text: "Semoga sehat selalu", bold: false),
