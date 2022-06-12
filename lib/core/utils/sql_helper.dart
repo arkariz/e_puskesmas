@@ -4,12 +4,12 @@ class SQLHelper {
   static Future<void> createTables(sql.Database database) async {
     await database.execute("""CREATE TABLE pasien(
         id_pasien INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-        status_pasien TEXT
+        status_pasien TEXT,
         nama_lengkap TEXT,
         email TEXT,
         password TEXT,
         nama_kk TEXT,
-                jenis_kelamin TEXT,
+        jenis_kelamin TEXT,
         provinsi TEXT,
         kabupaten TEXT,
         kode_Pos TEXT,
@@ -17,7 +17,7 @@ class SQLHelper {
         foto_profile_path TEXT,
         kk_path TEXT,
         ktp_path TEXT,
-        bpjs_path TEXT,
+        bpjs_path TEXT
       )
       """);
 
@@ -28,7 +28,7 @@ class SQLHelper {
         jenis_pasien TEXT,
         dokter TEXT,
         waktu TEXT,
-        tanggal TEXT,
+        tanggal TEXT
       )
       """);
   }

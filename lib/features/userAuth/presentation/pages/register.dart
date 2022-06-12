@@ -40,14 +40,14 @@ class _RegisterPageState extends State<RegisterPage> {
             children: [
               IconButton(
                 onPressed: () {
-                  Get.toNamed(Routes.REG_PASIEN_UMUM);
+                  Get.toNamed(Routes.REG_PASIEN_UMUM, arguments: "Pasien Umum");
                 },
                 iconSize: 150,
                 icon: Image.asset("assets/icons/pasien-umum-button.png"),
               ),
               IconButton(
                 onPressed: () {
-                  Get.toNamed(Routes.REG_PASIEN_BPJS);
+                  Get.toNamed(Routes.REG_PASIEN_BPJS, arguments: "Pasien BPJS");
                 },
                 iconSize: 150,
                 icon: Image.asset("assets/icons/pasien-bpjs-button.png"),

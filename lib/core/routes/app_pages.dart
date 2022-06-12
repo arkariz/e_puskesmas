@@ -2,6 +2,7 @@
 
 import 'package:e_puskesmas/features/poli/presentation/pages/home_page.dart';
 import 'package:e_puskesmas/features/poli/presentation/pages/poli_form.dart';
+import 'package:e_puskesmas/features/userAuth/presentation/binding/auth_binding.dart';
 import 'package:e_puskesmas/features/userAuth/presentation/pages/login.dart';
 import 'package:e_puskesmas/features/userAuth/presentation/pages/register.dart';
 import 'package:e_puskesmas/features/userAuth/presentation/pages/register_bpjs_form.dart';
@@ -17,6 +18,7 @@ class AppPages {
     GetPage(
       name: _Paths.LOGIN,
       page: () => LoginPage(),
+      binding: AuthBinding(),
     ),
     GetPage(
       name: _Paths.HOME,
@@ -29,6 +31,7 @@ class AppPages {
     GetPage(
       name: _Paths.REG_PASIEN_BPJS,
       page: () => RegisterBpjsForm(),
+      binding: AuthBinding(),
     ),
     GetPage(
       name: _Paths.REG_PASIEN_UMUM,

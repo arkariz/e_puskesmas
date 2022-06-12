@@ -1,26 +1,15 @@
 import 'package:e_puskesmas/core/routes/app_pages.dart';
 import 'package:e_puskesmas/core/themes/theme_constant.dart';
 import 'package:e_puskesmas/core/widgets/custom_button.dart';
-import 'package:e_puskesmas/features/userAuth/presentation/pages/register.dart';
+import 'package:e_puskesmas/features/userAuth/presentation/controller/login_controller.dart';
 import 'package:e_puskesmas/features/userAuth/presentation/widgets/login/background_image.dart';
 import 'package:e_puskesmas/features/userAuth/presentation/widgets/login/landing_text.dart';
 import 'package:e_puskesmas/features/userAuth/presentation/widgets/login/login_form.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class LoginPage extends StatefulWidget {
-  LoginPage({Key? key}) : super(key: key);
-
-  @override
-  State<LoginPage> createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
-  final _emailController = TextEditingController();
-  final _emailNode = FocusNode();
-
-  final _sandiController = TextEditingController();
-  final _sandiNode = FocusNode();
+class LoginPage extends GetView<LoginController> {
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -43,20 +32,18 @@ class _LoginPageState extends State<LoginPage> {
               const LandingText(),
               const SizedBox(height: kDefaultPadding),
               LoginForm(
-                emailController: _emailController,
-                emailNode: _emailNode,
+                emailController: controller.emailController.value,
+                emailNode: controller.emailNode.value,
                 size: size,
-                sandiController: _sandiController,
-                sandiNode: _sandiNode,
+                sandiController: controller.sandiController.value,
+                sandiNode: controller.sandiNode.value,
               ),
               const SizedBox(height: kTopPadding),
               CustomButton(
                 size: size,
                 buttonWidth: 0.85,
                 label: "Masuk",
-                onPressed: () {
-                  Get.toNamed(Routes.HOME);
-                },
+                onPressed: controller.loginPasien,
               ),
               const SizedBox(height: kLabelPadding),
               Row(
