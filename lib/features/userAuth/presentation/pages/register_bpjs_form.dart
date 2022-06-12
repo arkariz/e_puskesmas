@@ -19,12 +19,16 @@ class _RegisterBpjsFormState extends State<RegisterBpjsForm> {
   final _namaController = TextEditingController();
   final _emailController = TextEditingController();
   final _sandiController = TextEditingController();
+
+  final _namaKKController = TextEditingController();
+
   final _kodeposController = TextEditingController();
   final _detailAlamatController = TextEditingController();
 
   final _namaNode = FocusNode();
   final _emailNode = FocusNode();
   final _sandiNode = FocusNode();
+  final _namaKKNode = FocusNode();
   final _kodeposNode = FocusNode();
   final _detailAlamatNode = FocusNode();
 
@@ -88,18 +92,11 @@ class _RegisterBpjsFormState extends State<RegisterBpjsForm> {
                     const H3Text(text: "Data diri", bold: true),
                     const SizedBox(height: kDefaultPadding),
                     CustomTextField(
-                      controller: _namaController,
-                      node: _namaNode,
+                      controller: _namaKKController,
+                      node: _namaKKNode,
                       size: size,
-                      label: "tes",
-                      hint: "tes",
-                    ),
-                    CustomTextField(
-                      controller: _namaController,
-                      node: _namaNode,
-                      size: size,
-                      label: "TES",
-                      hint: "TES",
+                      label: "Nama Kartu Keluarga",
+                      hint: "Nama Kartu Keluarga",
                     ),
                     CustomDropdown(
                       label: "Jenis Kelamni",

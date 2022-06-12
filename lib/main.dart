@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.teal,
       ),
-      initialRoute: Routes.POLI_FORM,
+      initialRoute: Routes.REG_PASIEN_UMUM,
       getPages: AppPages.routes,
     );
   }
