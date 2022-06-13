@@ -1,15 +1,23 @@
 import 'package:e_puskesmas/core/themes/theme_constant.dart';
 import 'package:e_puskesmas/core/widgets/h4_text.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import 'h5_text.dart';
 
 class DateField extends StatefulWidget {
-  const DateField({Key? key, required this.label, required this.icon, required this.isDate}) : super(key: key);
+  const DateField({
+    Key? key,
+    required this.label,
+    required this.icon,
+    required this.isDate,
+    required this.onSelected,
+  }) : super(key: key);
 
   final String label;
   final IconData icon;
   final bool isDate;
+  final void Function(String) onSelected;
 
   @override
   State<DateField> createState() => _DateFieldState();
@@ -30,6 +38,8 @@ class _DateFieldState extends State<DateField> {
       setState(() {
         selectedDate = picked;
       });
+      String formattedDate = DateFormat('yyyy-MM-dd').format(picked);
+      widget.onSelected(formattedDate);
     }
   }
 
@@ -50,7 +60,10 @@ class _DateFieldState extends State<DateField> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return GestureDetector(
-      onTap: () => widget.isDate ? _selectDate(context) : _selectTime(context),
+      onTap: () {
+        widget.isDate ? _selectDate(context) : _selectTime(context);
+        widget.onSelected(selectedTime.format(context));
+      },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

@@ -12,35 +12,6 @@ import 'package:get/state_manager.dart';
 class RegisterBpjsForm extends GetView<RegisterController> {
   const RegisterBpjsForm({Key? key}) : super(key: key);
 
-  // final _namaController = TextEditingController();
-  // final _emailController = TextEditingController();
-  // final _sandiController = TextEditingController();
-
-  // final _namaKKController = TextEditingController();
-
-  // final _kodeposController = TextEditingController();
-  // final _detailAlamatController = TextEditingController();
-
-  // final _namaNode = FocusNode();
-  // final _emailNode = FocusNode();
-  // final _sandiNode = FocusNode();
-  // final _namaKKNode = FocusNode();
-  // final _kodeposNode = FocusNode();
-  // final _detailAlamatNode = FocusNode();
-
-  // final List<String> menuItems = [
-  //   'Laki-Laki',
-  //   'Perempuan',
-  // ];
-
-  // String? _genderValue;
-
-  // void _onSelectGender(String value) {
-  //   setState(() {
-  //     _genderValue = value;
-  //   });
-  // }
-
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;

@@ -10,7 +10,8 @@ class CustomDropdown extends StatelessWidget {
     required this.menuItems,
     required this.onChangeValue,
     required this.label,
-    required this.hint, this.icon,
+    required this.hint,
+    this.icon,
   }) : super(key: key);
 
   final Size size;
@@ -69,10 +70,10 @@ class CustomDropdown extends StatelessWidget {
                   return hint;
                 }
               },
-              onChanged: (value) {},
-              onSaved: (value) {
+              onChanged: (value) {
                 onChangeValue(value.toString());
               },
+              onSaved: (value) {},
             ),
           ),
         ),

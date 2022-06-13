@@ -23,6 +23,7 @@ class SQLHelper {
 
     await database.execute("""CREATE TABLE poli(
         id_poli INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+        kode_antrian TEXT,
         jenis_poli TEXT,
         nama_pasien TEXT,
         jenis_pasien TEXT,
@@ -36,7 +37,7 @@ class SQLHelper {
   static Future<sql.Database> db() async {
     return sql.openDatabase(
       'puskesmas.db',
-      version: 1,
+      version: 2,
       onCreate: (sql.Database database, int version) async {
         await createTables(database);
       },

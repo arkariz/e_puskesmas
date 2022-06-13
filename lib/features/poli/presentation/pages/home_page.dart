@@ -1,3 +1,4 @@
+import 'package:e_puskesmas/core/routes/app_pages.dart';
 import 'package:e_puskesmas/core/themes/theme_constant.dart';
 import 'package:e_puskesmas/core/widgets/h1_text.dart';
 import 'package:e_puskesmas/core/widgets/h4_text.dart';
@@ -27,7 +28,7 @@ class HomePage extends GetView<HomeController> {
             children: [
               Obx(
                 () => HomeHeader(
-                  namaLengkap: controller.namaLengkap.value,
+                  namaLengkap: controller.namaPasien.value,
                   jenisPasien: controller.statusPasien.value,
                 ),
               ),
@@ -45,15 +46,43 @@ class HomePage extends GetView<HomeController> {
                 children: [
                   GestureDetector(
                     child: Image.asset("assets/images/poli-umum.png"),
+                    onTap: () {
+                      Get.toNamed(Routes.POLI_FORM, arguments: {
+                        "nama": controller.namaPasien.value,
+                        "jenis_pasien": controller.statusPasien.value,
+                        "poli": "Poli Umum",
+                      });
+                    },
                   ),
                   GestureDetector(
                     child: Image.asset("assets/images/poli-kb.png"),
+                    onTap: () {
+                      Get.toNamed(Routes.POLI_FORM, arguments: {
+                        "nama": controller.namaPasien.value,
+                        "jenis_pasien": controller.statusPasien.value,
+                        "poli": "Poli KB",
+                      });
+                    },
                   ),
                   GestureDetector(
                     child: Image.asset("assets/images/poli-kia.png"),
+                    onTap: () {
+                      Get.toNamed(Routes.POLI_FORM, arguments: {
+                        "nama": controller.namaPasien.value,
+                        "jenis_pasien": controller.statusPasien.value,
+                        "poli": "Poli KIA",
+                      });
+                    },
                   ),
                   GestureDetector(
                     child: Image.asset("assets/images/poli-kia.png"),
+                    onTap: () {
+                      Get.toNamed(Routes.POLI_FORM, arguments: {
+                        "nama": controller.namaPasien.value,
+                        "jenis_pasien": controller.statusPasien.value,
+                        "poli": "Poli KIA",
+                      });
+                    },
                   )
                 ],
               )

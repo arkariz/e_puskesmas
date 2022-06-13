@@ -4,45 +4,13 @@ import 'package:e_puskesmas/core/widgets/custom_dropdown.dart';
 import 'package:e_puskesmas/core/widgets/custom_textfield.dart';
 import 'package:e_puskesmas/core/widgets/h3_text.dart';
 import 'package:e_puskesmas/core/widgets/h5_text.dart';
+import 'package:e_puskesmas/features/userAuth/presentation/controller/register_controller.dart';
 import 'package:e_puskesmas/features/userAuth/presentation/widgets/register_umum/header_register.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class RegisterUmumForm extends StatefulWidget {
+class RegisterUmumForm extends GetView<RegisterController> {
   const RegisterUmumForm({Key? key}) : super(key: key);
-
-  @override
-  State<RegisterUmumForm> createState() => _RegisterUmumFormState();
-}
-
-class _RegisterUmumFormState extends State<RegisterUmumForm> {
-  final _namaController = TextEditingController();
-  final _emailController = TextEditingController();
-  final _sandiController = TextEditingController();
-  final _namaKKController = TextEditingController();
-
-  final _kodeposController = TextEditingController();
-  final _detailAlamatController = TextEditingController();
-
-  final _namaNode = FocusNode();
-  final _emailNode = FocusNode();
-  final _sandiNode = FocusNode();
-  final _namaKKNode = FocusNode();
-
-  final _kodeposNode = FocusNode();
-  final _detailAlamatNode = FocusNode();
-
-  final List<String> menuItems = [
-    'Laki-Laki',
-    'Perempuan',
-  ];
-
-  String? _genderValue;
-
-  void _onSelectGender(String value) {
-    setState(() {
-      _genderValue = value;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -70,22 +38,22 @@ class _RegisterUmumFormState extends State<RegisterUmumForm> {
                     const H3Text(text: "Informasi akun", bold: true),
                     const SizedBox(height: kDefaultPadding),
                     CustomTextField(
-                      controller: _namaController,
-                      node: _namaNode,
+                      controller: controller.namaController.value,
+                      node: controller.namaNode.value,
                       size: size,
                       label: "Nama Lengkap",
                       hint: "Masukkan Nama",
                     ),
                     CustomTextField(
-                      controller: _emailController,
-                      node: _emailNode,
+                      controller: controller.emailController.value,
+                      node: controller.emailNode.value,
                       size: size,
                       label: "Email",
                       hint: "Masukkan Emali",
                     ),
                     CustomTextField(
-                      controller: _sandiController,
-                      node: _sandiNode,
+                      controller: controller.sandiController.value,
+                      node: controller.sandiNode.value,
                       size: size,
                       label: "Kata Sandi",
                       hint: "Masukkan Kata Sandi",
@@ -93,8 +61,8 @@ class _RegisterUmumFormState extends State<RegisterUmumForm> {
                     const H3Text(text: "Data diri", bold: true),
                     const SizedBox(height: kDefaultPadding),
                     CustomTextField(
-                      controller: _namaKKController,
-                      node: _namaKKNode,
+                      controller: controller.namaKKController.value,
+                      node: controller.namaKKNode.value,
                       size: size,
                       label: "Nama Kartu Keluarga",
                       hint: "Nama Kartu Keluarga",
@@ -103,8 +71,8 @@ class _RegisterUmumFormState extends State<RegisterUmumForm> {
                       label: "Jenis Kelamin",
                       hint: "Pilih Jenis Kelamin",
                       size: size,
-                      menuItems: menuItems,
-                      onChangeValue: _onSelectGender,
+                      menuItems: controller.menuItems,
+                      onChangeValue: controller.onSelectGender,
                     ),
                     const H3Text(text: "Alamat", bold: true),
                     const SizedBox(height: kDefaultPadding),
@@ -112,26 +80,26 @@ class _RegisterUmumFormState extends State<RegisterUmumForm> {
                       label: "Provinsi",
                       hint: "Pilih Provinsi",
                       size: size,
-                      menuItems: menuItems,
-                      onChangeValue: _onSelectGender,
+                      menuItems: controller.provItems,
+                      onChangeValue: controller.onSelectProv,
                     ),
                     CustomDropdown(
                       label: "Kabupaten/Kota",
                       hint: "Pilih Kabupaten/Kota",
                       size: size,
-                      menuItems: menuItems,
-                      onChangeValue: _onSelectGender,
+                      menuItems: controller.kabItems,
+                      onChangeValue: controller.onSelectkab,
                     ),
                     CustomTextField(
-                      controller: _kodeposController,
-                      node: _kodeposNode,
+                      controller: controller.kodeposController.value,
+                      node: controller.kodeposNode.value,
                       size: size,
                       label: "Kode Post",
                       hint: "Masukkan Kode Pos",
                     ),
                     CustomTextField(
-                      controller: _detailAlamatController,
-                      node: _detailAlamatNode,
+                      controller: controller.detailAlamatController.value,
+                      node: controller.detailAlamatNode.value,
                       size: size,
                       label: "Detail alamat lainnya",
                       hint: "",
@@ -150,7 +118,9 @@ class _RegisterUmumFormState extends State<RegisterUmumForm> {
                       size: size,
                       buttonWidth: 0.90,
                       label: "Daftar",
-                      onPressed: () {},
+                      onPressed: () {
+                        controller.createPasien();
+                      },
                     ),
                   ],
                 ),

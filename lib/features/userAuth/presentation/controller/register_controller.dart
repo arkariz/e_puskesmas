@@ -56,23 +56,28 @@ class RegisterController extends GetxController {
   }
 
   void createPasien() async {
-    await PasienSql.createPasien(
-      statusPasien,
-      namaController.value.text,
-      emailController.value.text,
-      sandiController.value.text,
-      namaKKController.value.text,
-      genderValue.value,
-      provValue.value,
-      kabValue.value,
-      kodeposController.value.text,
-      detailAlamatController.value.text,
-      "profilePath",
-      "kkPath",
-      "ktpPath",
-      "bpjsPath",
-    );
+    try {
+      await PasienSql.createPasien(
+        statusPasien,
+        namaController.value.text,
+        emailController.value.text,
+        sandiController.value.text,
+        namaKKController.value.text,
+        genderValue.value,
+        provValue.value,
+        kabValue.value,
+        kodeposController.value.text,
+        detailAlamatController.value.text,
+        "profilePath",
+        "kkPath",
+        "ktpPath",
+        "bpjsPath",
+      );
 
-    Get.offNamed(Routes.LOGIN);
+      Get.offNamed(Routes.LOGIN);
+      Get.snackbar("E-Puskesmas", "Pendaftaran Berhasil");
+    } catch (e) {
+      Get.snackbar("E-Puskesmas", "Terjadi Kesalahan");
+    }
   }
 }
