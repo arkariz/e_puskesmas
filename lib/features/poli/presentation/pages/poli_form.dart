@@ -76,7 +76,6 @@ class PoliForm extends GetView<PoliController> {
                       label: "Daftar",
                       onPressed: () {
                         controller.createPoli();
-                        controller.getPoli();
                       },
                     ),
                   ],

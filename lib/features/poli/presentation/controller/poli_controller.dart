@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 class PoliController extends GetxController {
   final args = Get.arguments;
 
+  var kodeAntrian = "".obs;
   var jenisPoli = "".obs;
   var namaPasien = "".obs;
   var jenisPasien = "".obs;
@@ -30,8 +31,9 @@ class PoliController extends GetxController {
   }
 
   void createPoli() async {
+    generateRandomString(5);
     await PoliSql.createpoli(
-      generateRandomString(5),
+      kodeAntrian.value,
       jenisPoli.value,
       namaPasien.value,
       jenisPasien.value,
@@ -40,14 +42,15 @@ class PoliController extends GetxController {
       tanggal.value,
     );
 
-    Get.offNamed(Routes.HOME);
-  }
-
-  void getPoli() async {
-    var poli = await PoliSql.getpoli();
-    print(poli.last["kode_antrian"]);
-    print(poli.last["waktu"]);
-    print(poli.last["tanggal"]);
+    Get.offNamed(Routes.POLI_TICKET, arguments: [
+      kodeAntrian.value,
+      jenisPoli.value,
+      namaPasien.value,
+      jenisPasien.value,
+      dokterValue.value,
+      waktu.value,
+      tanggal.value,
+    ]);
   }
 
   void onSelectDokter(String value) {
@@ -62,8 +65,8 @@ class PoliController extends GetxController {
     waktu(value);
   }
 
-  String generateRandomString(int len) {
+  void generateRandomString(int len) {
     var r = Random();
-    return String.fromCharCodes(List.generate(len, (index) => r.nextInt(33) + 89));
+    kodeAntrian(String.fromCharCodes(List.generate(len, (index) => r.nextInt(33) + 89)));
   }
 }

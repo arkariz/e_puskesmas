@@ -2,8 +2,10 @@
 
 import 'package:e_puskesmas/features/poli/presentation/binding/home_binding.dart';
 import 'package:e_puskesmas/features/poli/presentation/binding/poli_binding.dart';
+import 'package:e_puskesmas/features/poli/presentation/binding/poli_ticket_binding.dart';
 import 'package:e_puskesmas/features/poli/presentation/pages/home_page.dart';
 import 'package:e_puskesmas/features/poli/presentation/pages/poli_form.dart';
+import 'package:e_puskesmas/features/poli/presentation/pages/poli_ticket.dart';
 import 'package:e_puskesmas/features/userAuth/presentation/binding/auth_binding.dart';
 import 'package:e_puskesmas/features/userAuth/presentation/pages/login.dart';
 import 'package:e_puskesmas/features/userAuth/presentation/pages/register.dart';
@@ -44,6 +46,11 @@ class AppPages {
       name: _Paths.POLI_FORM,
       page: () => PoliForm(),
       binding: PoliBinding(),
+    ),
+    GetPage(
+      name: _Paths.POLI_TICKET,
+      page: () => PoliTickerScreen(),
+      binding: PoliTicketBinding(),
     ),
   ];
 }
