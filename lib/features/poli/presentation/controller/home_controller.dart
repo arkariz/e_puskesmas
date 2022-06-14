@@ -19,9 +19,9 @@ class HomeController extends GetxController {
     if (isLogin!) {
       final List<String>? pasien = prefs.getStringList('pasien');
 
-      namaPasien(pasien![0]);
-      statusPasien(pasien[1]);
-      email(pasien[2]);
+      namaPasien(pasien![1]);
+      statusPasien(pasien[2]);
+      email(pasien[3]);
     }
   }
 }

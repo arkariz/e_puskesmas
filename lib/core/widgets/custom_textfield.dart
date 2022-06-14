@@ -16,6 +16,7 @@ class CustomTextField extends StatefulWidget {
     this.suffixIcon,
     this.onPressed,
     required this.hint,
+    this.isPassword,
   }) : super(key: key);
 
   final TextEditingController controller;
@@ -28,6 +29,7 @@ class CustomTextField extends StatefulWidget {
   final TextInputType? type;
   final int? maxLines;
   final VoidCallback? onPressed;
+  final bool? isPassword;
 
   @override
   _CustomTextFieldState createState() => _CustomTextFieldState();
@@ -45,6 +47,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
           child: SizedBox(
             width: widget.size.width * 0.85,
             child: TextFormField(
+              obscureText: widget.isPassword ?? false,
               maxLines: widget.maxLines,
               keyboardType: widget.type ?? TextInputType.text,
               focusNode: widget.node,

@@ -1,9 +1,12 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:e_puskesmas/features/poli/presentation/binding/home_binding.dart';
+import 'package:e_puskesmas/features/poli/presentation/binding/navigation_binding.dart';
 import 'package:e_puskesmas/features/poli/presentation/binding/poli_binding.dart';
 import 'package:e_puskesmas/features/poli/presentation/binding/poli_ticket_binding.dart';
+import 'package:e_puskesmas/features/poli/presentation/pages/edit_profile_page.dart';
 import 'package:e_puskesmas/features/poli/presentation/pages/home_page.dart';
+import 'package:e_puskesmas/features/poli/presentation/pages/navigation_bottom.dart';
 import 'package:e_puskesmas/features/poli/presentation/pages/poli_form.dart';
 import 'package:e_puskesmas/features/poli/presentation/pages/poli_ticket.dart';
 import 'package:e_puskesmas/features/userAuth/presentation/binding/auth_binding.dart';
@@ -51,6 +54,16 @@ class AppPages {
       name: _Paths.POLI_TICKET,
       page: () => PoliTickerScreen(),
       binding: PoliTicketBinding(),
+    ),
+    GetPage(
+      name: _Paths.NAV_BOTTOM,
+      page: () => NavigationBottom(),
+      binding: NavigationBottomBinding(),
+    ),
+    GetPage(
+      name: _Paths.EDIT_PROFIL,
+      page: () => EditProfilePage(),
+      binding: NavigationBottomBinding(),
     ),
   ];
 }

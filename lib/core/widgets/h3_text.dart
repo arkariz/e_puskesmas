@@ -5,10 +5,12 @@ class H3Text extends StatelessWidget {
     Key? key,
     required this.text,
     required this.bold,
+    this.textColor,
   }) : super(key: key);
 
   final String text;
   final bool bold;
+  final Color? textColor;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,7 @@ class H3Text extends StatelessWidget {
         fontSize: 16.0,
         fontFamily: "poppins",
         fontWeight: bold ? FontWeight.w500 : FontWeight.normal,
-        color: Colors.black,
+        color: textColor ?? Colors.black,
       ),
     );
   }

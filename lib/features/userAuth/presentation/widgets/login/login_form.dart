@@ -40,6 +40,8 @@ class LoginForm extends StatelessWidget {
           label: "Kata Sandi",
           hint: "Masukkan Kata Sandi",
           type: TextInputType.emailAddress,
+          isPassword: true,
+          maxLines: 1,
         )
       ],
     );

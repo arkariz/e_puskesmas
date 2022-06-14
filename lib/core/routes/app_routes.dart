@@ -12,6 +12,8 @@ abstract class Routes {
   static const REG_PASIEN_BPJS = _Paths.REG_PASIEN_BPJS;
   static const POLI_FORM = _Paths.POLI_FORM;
   static const POLI_TICKET = _Paths.POLI_TICKET;
+  static const NAV_BOTTOM = _Paths.NAV_BOTTOM;
+  static const EDIT_PROFIL = _Paths.EDIT_PROFIL;
 }
 
 abstract class _Paths {
@@ -24,4 +26,6 @@ abstract class _Paths {
 
   static const POLI_FORM = '/poli_form';
   static const POLI_TICKET = '/poli_ticket';
+  static const NAV_BOTTOM = '/nav_bottom';
+  static const EDIT_PROFIL = '/edit_profile';
 }

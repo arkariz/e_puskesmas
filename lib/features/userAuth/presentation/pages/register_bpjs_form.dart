@@ -56,6 +56,8 @@ class RegisterBpjsForm extends GetView<RegisterController> {
                         size: size,
                         label: "Kata Sandi",
                         hint: "Masukkan Kata Sandi",
+                        isPassword: true,
+                        maxLines: 1,
                       ),
                       const H3Text(text: "Data diri", bold: true),
                       const SizedBox(height: kDefaultPadding),

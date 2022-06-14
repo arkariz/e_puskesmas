@@ -1,0 +1,84 @@
+import 'package:e_puskesmas/features/poli/presentation/controller/navigation_controller.dart';
+import 'package:e_puskesmas/features/poli/presentation/pages/home_page.dart';
+import 'package:e_puskesmas/features/poli/presentation/pages/profile.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+class NavigationBottom extends GetView<NavigationBottomController> {
+  const NavigationBottom({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    var pages = <Widget>[
+      const HomePage(),
+      const ProfilePage(),
+      const ProfilePage(),
+      const ProfilePage(),
+    ];
+
+    return Scaffold(
+      body: Obx(() => pages[controller.currentIndex.value]),
+      //extendBody: true,
+      bottomNavigationBar: Container(
+        decoration: const BoxDecoration(
+          color: Colors.teal,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(40),
+            topRight: Radius.circular(40),
+          ),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            navBarItem(context, "assets/icons/ic_home_cleaned.svg", "Beranda", 0),
+            navBarItem(context, "assets/icons/ic_plus_cleaned.svg", "Tambah", 1),
+            navBarItem(context, "assets/icons/ic_db_cleaned.svg", "List", 2),
+            navBarItem(context, "assets/icons/ic_profile_cleaned.svg", "Profil", 3),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget navBarItem(BuildContext context, String img, String text, int index) {
+    return GestureDetector(
+      behavior: HitTestBehavior.translucent,
+      onTap: () {
+        controller.changePage(index);
+      },
+      child: Container(
+        padding: const EdgeInsets.all(4),
+        height: 60,
+        width: MediaQuery.of(context).size.width / 4 - 15,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Column(
+              children: [
+                SizedBox(
+                  width: 20,
+                  height: 20,
+                  child: Obx(
+                    () => Icon(
+                      Icons.home,
+                      color: (index == controller.currentIndex.value) ? Colors.white : Colors.white12,
+                    ),
+                  ),
+                ),
+                Obx(
+                  () => Text(
+                    text,
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: (index == controller.currentIndex.value) ? Colors.white : Colors.white12,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
