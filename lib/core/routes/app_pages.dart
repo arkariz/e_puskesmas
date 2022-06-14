@@ -44,6 +44,7 @@ class AppPages {
     GetPage(
       name: _Paths.REG_PASIEN_UMUM,
       page: () => RegisterUmumForm(),
+      binding: AuthBinding(),
     ),
     GetPage(
       name: _Paths.POLI_FORM,

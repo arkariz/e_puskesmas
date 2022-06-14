@@ -13,7 +13,6 @@ class NavigationBottom extends GetView<NavigationBottomController> {
       const HomePage(),
       const ProfilePage(),
       const ProfilePage(),
-      const ProfilePage(),
     ];
 
     return Scaffold(
@@ -30,17 +29,16 @@ class NavigationBottom extends GetView<NavigationBottomController> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            navBarItem(context, "assets/icons/ic_home_cleaned.svg", "Beranda", 0),
-            navBarItem(context, "assets/icons/ic_plus_cleaned.svg", "Tambah", 1),
-            navBarItem(context, "assets/icons/ic_db_cleaned.svg", "List", 2),
-            navBarItem(context, "assets/icons/ic_profile_cleaned.svg", "Profil", 3),
+            navBarItem(context, Icons.home, "Home", 0),
+            navBarItem(context, Icons.analytics_rounded, "Ticket", 1),
+            navBarItem(context, Icons.person, "Profile", 2),
           ],
         ),
       ),
     );
   }
 
-  Widget navBarItem(BuildContext context, String img, String text, int index) {
+  Widget navBarItem(BuildContext context, IconData icon, String text, int index) {
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
       onTap: () {
@@ -60,7 +58,7 @@ class NavigationBottom extends GetView<NavigationBottomController> {
                   height: 20,
                   child: Obx(
                     () => Icon(
-                      Icons.home,
+                      icon,
                       color: (index == controller.currentIndex.value) ? Colors.white : Colors.white12,
                     ),
                   ),

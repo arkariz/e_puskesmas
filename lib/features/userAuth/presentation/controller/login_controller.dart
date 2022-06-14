@@ -19,6 +19,9 @@ class LoginController extends GetxController {
 
   void loginPasien() async {
     try {
+      if (emailController.value.text == "" || sandiController.value.text == "") {
+        throw Exception("Email dan Password Harus diisi");
+      }
       final pasien = await PasienSql.getSinglePasien(
         emailController.value.text,
         sandiController.value.text,
@@ -56,7 +59,7 @@ class LoginController extends GetxController {
 
       Get.offNamed(Routes.NAV_BOTTOM);
     } catch (e) {
-      Get.snackbar("E-Puskesmas", "Terjadi Kesalahan");
+      Get.snackbar("E-Puskesmas", e.toString());
     }
   }
 
