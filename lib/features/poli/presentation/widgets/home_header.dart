@@ -40,7 +40,7 @@ class HomeHeader extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 H5Text(text: controller.namaPasien.value, bold: false),
-                H5Text(text: controller.namaPasien.value, bold: false),
+                H5Text(text: controller.email.value, bold: false),
               ],
             )
           ],
