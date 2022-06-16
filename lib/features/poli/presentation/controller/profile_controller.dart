@@ -33,7 +33,8 @@ class ProfileController extends GetxController {
     if (isLogin!) {
       final List<String>? pasien = prefs.getStringList('pasien');
 
-      idPasien(pasien![0]);
+      print(pasien!.length);
+      idPasien(pasien[0]);
       namaPasien(pasien[1]);
       statusPasien(pasien[2]);
       email(pasien[3]);
@@ -48,45 +49,44 @@ class ProfileController extends GetxController {
   }
 
   void updateFoto() async {
-    try {
-      await PickImage().getImage(ImageSource.gallery).then((file) async {
-        final prefs = await SharedPreferences.getInstance();
+    // try {
+    await PickImage().getImage(ImageSource.gallery).then((file) async {
+      final prefs = await SharedPreferences.getInstance();
 
-        final List<String>? pasien = prefs.getStringList('data_pasien');
-        await PasienSql.updatePasien(
-          int.parse(pasien![0]),
-          pasien[1],
-          pasien[2],
-          pasien[3],
-          pasien[4],
-          pasien[5],
-          pasien[6],
-          pasien[7],
-          pasien[8],
-          pasien[9],
-          pasien[10],
-          file.path,
-          pasien[12],
-          pasien[13],
-          pasien[14],
-        );
+      final List<String>? pasien = prefs.getStringList('data_pasien');
+      await PasienSql.updatePasien(
+        int.parse(pasien![0]),
+        pasien[1],
+        pasien[2],
+        pasien[3],
+        pasien[4],
+        pasien[5],
+        pasien[6],
+        pasien[7],
+        pasien[8],
+        pasien[9],
+        pasien[10],
+        file.path,
+        pasien[12],
+        pasien[13],
+        pasien[14],
+      );
 
-        await prefs.setStringList('pasien', <String>[
-          pasien[0],
-          pasien[2],
-          pasien[1],
-          pasien[3],
-          file.path,
-        ]);
-      });
+      await prefs.setStringList('pasien', <String>[
+        pasien[0],
+        pasien[2],
+        pasien[1],
+        pasien[3],
+        file.path,
+      ]);
+    });
 
-      getPasien();
-      homeController.getPasien();
-      Get.back();
-    } catch (e) {
-      print(e.toString());
-      Get.snackbar("Profile", "Terjadi Kesalahan");
-    }
+    getPasien();
+    homeController.getPasien();
+    // } catch (e) {
+    //   print(e.toString());
+    //   Get.snackbar("Profile", "Terjadi Kesalahan");
+    // }
   }
 
   void updateDataPasien() async {
@@ -117,6 +117,7 @@ class ProfileController extends GetxController {
         namaTextController.value.text,
         pasien[1],
         emailTextController.value.text,
+        pasien[11],
       ]);
 
       namaPasien(namaTextController.value.text);

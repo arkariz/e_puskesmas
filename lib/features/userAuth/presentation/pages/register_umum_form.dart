@@ -100,7 +100,7 @@ class RegisterUmumForm extends GetView<RegisterController> {
                         controller: controller.kodeposController.value,
                         node: controller.kodeposNode.value,
                         size: size,
-                        label: "Kode Post",
+                        label: "Kode Pos",
                         hint: "Masukkan Kode Pos",
                       ),
                       CustomTextField(

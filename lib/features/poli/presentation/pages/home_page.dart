@@ -30,7 +30,7 @@ class HomePage extends GetView<HomeController> {
                 controller: controller,
               ),
               const SizedBox(height: kTopPadding),
-              const H1Text(text: "Selamat Data", bold: true),
+              const H1Text(text: "Selamat Datang", bold: true),
               const H4Text(text: "Semoga sehat selalu", bold: false),
               const SizedBox(height: kTopPadding),
               GestureDetector(

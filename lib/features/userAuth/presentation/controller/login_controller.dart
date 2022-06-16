@@ -34,6 +34,7 @@ class LoginController extends GetxController {
         pasien.last['nama_lengkap'],
         pasien.last['status_pasien'],
         pasien.last['email'],
+        pasien.last['foto_profile_path'],
       ]);
 
       await prefs.setBool('isLogin', true);

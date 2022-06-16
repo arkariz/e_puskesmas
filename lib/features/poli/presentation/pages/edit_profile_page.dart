@@ -10,6 +10,7 @@ class EditProfilePage extends GetView<ProfileController> {
 
   final namaNode = FocusNode();
   final emailNode = FocusNode();
+  final formFieldKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -18,31 +19,37 @@ class EditProfilePage extends GetView<ProfileController> {
       appBar: AppBar(title: const Text('Edit Profile')),
       body: SizedBox(
         width: size.width,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const SizedBox(height: kDefaultPadding * 2),
-            CustomTextField(
-              controller: controller.namaTextController.value,
-              node: namaNode,
-              size: size,
-              label: "Nama Lengkap",
-              hint: "Masukkan Nama Lengkap",
-            ),
-            CustomTextField(
-              controller: controller.emailTextController.value,
-              node: emailNode,
-              size: size,
-              label: "Email",
-              hint: "Masukkan Email",
-            ),
-            CustomButton(
+        child: Form(
+          key: formFieldKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const SizedBox(height: kDefaultPadding * 2),
+              CustomTextField(
+                controller: controller.namaTextController.value,
+                node: namaNode,
+                size: size,
+                label: "Nama Lengkap",
+                hint: "Masukkan Nama Lengkap",
+              ),
+              CustomTextField(
+                controller: controller.emailTextController.value,
+                node: emailNode,
+                size: size,
+                label: "Email",
+                hint: "Masukkan Email",
+              ),
+              CustomButton(
                 size: size,
                 label: "Simpan",
                 onPressed: () {
-                  controller.updateDataPasien();
-                })
-          ],
+                  if (formFieldKey.currentState!.validate()) {
+                    controller.updateDataPasien();
+                  }
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
