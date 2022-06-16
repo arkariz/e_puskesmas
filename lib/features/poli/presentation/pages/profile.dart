@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:e_puskesmas/core/routes/app_pages.dart';
 import 'package:e_puskesmas/core/themes/theme_constant.dart';
 import 'package:e_puskesmas/core/widgets/custom_button.dart';
@@ -18,7 +20,7 @@ class ProfilePage extends GetView<ProfileController> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: Obx(
-        () => Container(
+        () => SizedBox(
           width: size.width,
           height: size.height,
           child: Padding(
@@ -27,9 +29,42 @@ class ProfilePage extends GetView<ProfileController> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const CircleAvatar(
-                  backgroundImage: AssetImage("assets/images/user.png"),
-                  radius: 70,
+                Stack(
+                  children: [
+                    if (controller.image.value == "" || controller.image.value == "profilePath")
+                      const CircleAvatar(
+                        radius: 65,
+                        backgroundImage: AssetImage("assets/images/user.png"),
+                      )
+                    else
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(90),
+                        child: Image.file(
+                          File(controller.image.value),
+                          height: 130,
+                          width: 130,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    const Positioned(
+                      left: 84,
+                      child: CircleAvatar(
+                        backgroundColor: Colors.teal,
+                        radius: 22,
+                      ),
+                    ),
+                    Positioned(
+                      left: 90,
+                      child: GestureDetector(
+                        onTap: controller.updateFoto,
+                        child: const Icon(
+                          Icons.edit,
+                          size: 35,
+                          color: Colors.white,
+                        ),
+                      ),
+                    )
+                  ],
                 ),
                 H4Text(
                   text: controller.statusPasien.value,

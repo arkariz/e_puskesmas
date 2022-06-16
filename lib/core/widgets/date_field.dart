@@ -81,7 +81,7 @@ class _DateFieldState extends State<DateField> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 H4Text(
-                  text: widget.label,
+                  text: widget.isDate ? DateFormat('yyyy-MM-dd').format(selectedDate) : selectedTime.format(context),
                   bold: false,
                   textColor: Colors.black54,
                 ),

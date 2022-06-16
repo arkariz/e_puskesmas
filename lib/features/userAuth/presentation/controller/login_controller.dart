@@ -59,7 +59,11 @@ class LoginController extends GetxController {
 
       Get.offNamed(Routes.NAV_BOTTOM);
     } catch (e) {
-      Get.snackbar("E-Puskesmas", e.toString());
+      if (e.toString() == "Bad state: No element") {
+        Get.snackbar("E-Puskesmas", "User Tidak ditemukan");
+      } else {
+        Get.snackbar("E-Puskesmas", e.toString());
+      }
     }
   }
 

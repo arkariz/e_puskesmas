@@ -1,8 +1,10 @@
 import 'package:e_puskesmas/core/routes/app_pages.dart';
+import 'package:e_puskesmas/core/utils/image_picker.dart';
 import 'package:e_puskesmas/features/poli/presentation/controller/home_controller.dart';
 import 'package:e_puskesmas/features/userAuth/data/datasources/pasien_sql.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileController extends GetxController {
@@ -16,6 +18,7 @@ class ProfileController extends GetxController {
   final namaPasien = "".obs;
   final statusPasien = "".obs;
   final email = "".obs;
+  final image = "".obs;
 
   @override
   void onInit() {
@@ -34,6 +37,7 @@ class ProfileController extends GetxController {
       namaPasien(pasien[1]);
       statusPasien(pasien[2]);
       email(pasien[3]);
+      image(pasien[4]);
     }
   }
 
@@ -43,39 +47,85 @@ class ProfileController extends GetxController {
     Get.offNamed(Routes.LOGIN);
   }
 
+  void updateFoto() async {
+    try {
+      await PickImage().getImage(ImageSource.gallery).then((file) async {
+        final prefs = await SharedPreferences.getInstance();
+
+        final List<String>? pasien = prefs.getStringList('data_pasien');
+        await PasienSql.updatePasien(
+          int.parse(pasien![0]),
+          pasien[1],
+          pasien[2],
+          pasien[3],
+          pasien[4],
+          pasien[5],
+          pasien[6],
+          pasien[7],
+          pasien[8],
+          pasien[9],
+          pasien[10],
+          file.path,
+          pasien[12],
+          pasien[13],
+          pasien[14],
+        );
+
+        await prefs.setStringList('pasien', <String>[
+          pasien[0],
+          pasien[2],
+          pasien[1],
+          pasien[3],
+          file.path,
+        ]);
+      });
+
+      getPasien();
+      homeController.getPasien();
+      Get.back();
+    } catch (e) {
+      print(e.toString());
+      Get.snackbar("Profile", "Terjadi Kesalahan");
+    }
+  }
+
   void updateDataPasien() async {
-    final prefs = await SharedPreferences.getInstance();
+    try {
+      final prefs = await SharedPreferences.getInstance();
 
-    final List<String>? pasien = prefs.getStringList('data_pasien');
-    await PasienSql.updatePasien(
-      int.parse(pasien![0]),
-      pasien[1],
-      namaTextController.value.text,
-      emailTextController.value.text,
-      pasien[4],
-      pasien[5],
-      pasien[6],
-      pasien[7],
-      pasien[8],
-      pasien[9],
-      pasien[10],
-      pasien[11],
-      pasien[12],
-      pasien[13],
-      pasien[14],
-    );
+      final List<String>? pasien = prefs.getStringList('data_pasien');
+      await PasienSql.updatePasien(
+        int.parse(pasien![0]),
+        pasien[1],
+        namaTextController.value.text,
+        emailTextController.value.text,
+        pasien[4],
+        pasien[5],
+        pasien[6],
+        pasien[7],
+        pasien[8],
+        pasien[9],
+        pasien[10],
+        pasien[11],
+        pasien[12],
+        pasien[13],
+        pasien[14],
+      );
 
-    await prefs.setStringList('pasien', <String>[
-      pasien[0],
-      namaTextController.value.text,
-      pasien[1],
-      emailTextController.value.text,
-    ]);
+      await prefs.setStringList('pasien', <String>[
+        pasien[0],
+        namaTextController.value.text,
+        pasien[1],
+        emailTextController.value.text,
+      ]);
 
-    namaPasien(namaTextController.value.text);
-    email(emailTextController.value.text);
+      namaPasien(namaTextController.value.text);
+      email(emailTextController.value.text);
 
-    homeController.getPasien();
-    Get.back();
+      homeController.getPasien();
+      Get.back();
+    } catch (e) {
+      Get.snackbar("Profile", "Terjadi Kesalahan");
+    }
   }
 }

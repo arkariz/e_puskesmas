@@ -26,11 +26,8 @@ class HomePage extends GetView<HomeController> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Obx(
-                () => HomeHeader(
-                  namaLengkap: controller.namaPasien.value,
-                  jenisPasien: controller.statusPasien.value,
-                ),
+              HomeHeader(
+                controller: controller,
               ),
               const SizedBox(height: kTopPadding),
               const H1Text(text: "Selamat Data", bold: true),

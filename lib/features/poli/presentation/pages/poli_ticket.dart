@@ -84,7 +84,7 @@ class PoliTickerScreen extends GetView<PoliTicketController> {
                 size: size,
                 label: "Kembali",
                 onPressed: () {
-                  Get.offAllNamed(Routes.HOME);
+                  Get.offAllNamed(Routes.NAV_BOTTOM);
                 })
           ],
         ),

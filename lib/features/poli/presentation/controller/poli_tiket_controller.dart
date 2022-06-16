@@ -18,9 +18,9 @@ class PoliTicketController extends GetxController {
       jenisPoli(args[1]);
       namaPasien(args[2]);
       jenisPasien(args[3]);
-      waktu(args[4]);
-      tanggal(args[5]);
-      dokterValue(args[6]);
+      dokterValue(args[4]);
+      waktu(args[5]);
+      tanggal(args[6]);
     }
     super.onInit();
   }
