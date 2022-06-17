@@ -54,6 +54,12 @@ class PasienSql {
     return db.query('pasien', where: "email = ? AND password = ?", whereArgs: [email, password], limit: 1);
   }
 
+  // Read a single item by id
+  static Future<List<Map<String, dynamic>>> getSinglePasienById(int pasienId) async {
+    final db = await SQLHelper.db();
+    return db.query('pasien', where: "id_pasien = ? ", whereArgs: [pasienId], limit: 1);
+  }
+
   // Update an item by nim
   static Future<int> updatePasien(
     int idPasien,

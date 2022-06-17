@@ -33,8 +33,7 @@ class ProfileController extends GetxController {
     if (isLogin!) {
       final List<String>? pasien = prefs.getStringList('pasien');
 
-      print(pasien!.length);
-      idPasien(pasien[0]);
+      idPasien(pasien![0]);
       namaPasien(pasien[1]);
       statusPasien(pasien[2]);
       email(pasien[3]);
@@ -53,30 +52,32 @@ class ProfileController extends GetxController {
     await PickImage().getImage(ImageSource.gallery).then((file) async {
       final prefs = await SharedPreferences.getInstance();
 
-      final List<String>? pasien = prefs.getStringList('data_pasien');
+      final List<String>? pasienCache = prefs.getStringList('pasien');
+      final pasien = await PasienSql.getSinglePasienById(int.parse(pasienCache![0]));
+
       await PasienSql.updatePasien(
-        int.parse(pasien![0]),
-        pasien[1],
-        pasien[2],
-        pasien[3],
-        pasien[4],
-        pasien[5],
-        pasien[6],
-        pasien[7],
-        pasien[8],
-        pasien[9],
-        pasien[10],
+        pasien.last["id_pasien"],
+        pasien.last['status_pasien'],
+        pasien.last['nama_lengkap'],
+        pasien.last['email'],
+        pasien.last['password'],
+        pasien.last['nama_kk'],
+        pasien.last['jenis_kelamin'],
+        pasien.last['provinsi'],
+        pasien.last['kabupaten'],
+        pasien.last['kode_Pos'],
+        pasien.last['detail_alamat'],
         file.path,
-        pasien[12],
-        pasien[13],
-        pasien[14],
+        pasien.last['kk_path'],
+        pasien.last['ktp_path'],
+        pasien.last['bpjs_path'],
       );
 
       await prefs.setStringList('pasien', <String>[
-        pasien[0],
-        pasien[2],
-        pasien[1],
-        pasien[3],
+        pasien.last["id_pasien"].toString(),
+        pasien.last["nama_lengkap"],
+        pasien.last["status_pasien"],
+        pasien.last["email"],
         file.path,
       ]);
     });
@@ -93,36 +94,36 @@ class ProfileController extends GetxController {
     try {
       final prefs = await SharedPreferences.getInstance();
 
-      final List<String>? pasien = prefs.getStringList('data_pasien');
+      final List<String>? pasienCache = prefs.getStringList('pasien');
+      final pasien = await PasienSql.getSinglePasienById(int.parse(pasienCache![0]));
+
       await PasienSql.updatePasien(
-        int.parse(pasien![0]),
-        pasien[1],
+        pasien.last["id_pasien"],
+        pasien.last['status_pasien'],
         namaTextController.value.text,
         emailTextController.value.text,
-        pasien[4],
-        pasien[5],
-        pasien[6],
-        pasien[7],
-        pasien[8],
-        pasien[9],
-        pasien[10],
-        pasien[11],
-        pasien[12],
-        pasien[13],
-        pasien[14],
+        pasien.last['password'],
+        pasien.last['nama_kk'],
+        pasien.last['jenis_kelamin'],
+        pasien.last['provinsi'],
+        pasien.last['kabupaten'],
+        pasien.last['kode_Pos'],
+        pasien.last['detail_alamat'],
+        pasien.last['foto_profile_path'],
+        pasien.last['kk_path'],
+        pasien.last['ktp_path'],
+        pasien.last['bpjs_path'],
       );
 
       await prefs.setStringList('pasien', <String>[
-        pasien[0],
+        pasien.last["id_pasien"].toString(),
         namaTextController.value.text,
-        pasien[1],
+        pasien.last["status_pasien"],
         emailTextController.value.text,
-        pasien[11],
+        pasien.last["foto_profile_path"],
       ]);
 
-      namaPasien(namaTextController.value.text);
-      email(emailTextController.value.text);
-
+      getPasien();
       homeController.getPasien();
       Get.back();
     } catch (e) {
