@@ -16,8 +16,10 @@ class PoliController extends GetxController {
   var dokterValue = "".obs;
 
   final List<String> dokterItems = [
-    'Laki-Laki',
-    'Perempuan',
+    'Shavira Mediana',
+    'Putri Amanda',
+    'Ahmad Budi',
+    'Galang Baskara',
   ].obs;
 
   @override

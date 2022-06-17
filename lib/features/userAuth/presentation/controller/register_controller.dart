@@ -41,7 +41,7 @@ class RegisterController extends GetxController {
 
   final List<String> provItems = [
     'Kalimantan Tengah',
-    'Perempuan',
+    'Yogyakarta',
   ].obs;
 
   var provValue = "".obs;
@@ -52,7 +52,7 @@ class RegisterController extends GetxController {
 
   final List<String> kabItems = [
     'Sleman',
-    'Perempuan',
+    'Bantul',
   ].obs;
 
   var kabValue = "".obs;
