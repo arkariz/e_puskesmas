@@ -29,7 +29,8 @@ class SQLHelper {
         jenis_pasien TEXT,
         dokter TEXT,
         waktu TEXT,
-        tanggal TEXT
+        tanggal TEXT,
+        id_pasien INTEGER
       )
       """);
   }
@@ -37,7 +38,7 @@ class SQLHelper {
   static Future<sql.Database> db() async {
     return sql.openDatabase(
       'puskesmas.db',
-      version: 2,
+      version: 3,
       onCreate: (sql.Database database, int version) async {
         await createTables(database);
       },

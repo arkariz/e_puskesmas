@@ -32,7 +32,7 @@ class PoliController extends GetxController {
     super.onInit();
   }
 
-  void createPoli() async {
+  void createPoli(int idPasien) async {
     generateRandomString(5);
     await PoliSql.createpoli(
       kodeAntrian.value,
@@ -42,17 +42,20 @@ class PoliController extends GetxController {
       dokterValue.value,
       waktu.value,
       tanggal.value,
+      idPasien,
     );
 
-    Get.offNamed(Routes.POLI_TICKET, arguments: [
-      kodeAntrian.value,
-      jenisPoli.value,
-      namaPasien.value,
-      jenisPasien.value,
-      dokterValue.value,
-      waktu.value,
-      tanggal.value,
-    ]);
+    Get.offNamed(Routes.POLI_TICKET, arguments: {
+      "cache_poli": [
+        kodeAntrian.value,
+        jenisPoli.value,
+        namaPasien.value,
+        jenisPasien.value,
+        dokterValue.value,
+        waktu.value,
+        tanggal.value,
+      ]
+    });
   }
 
   void onSelectDokter(String value) {

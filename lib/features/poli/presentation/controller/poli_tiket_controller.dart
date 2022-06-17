@@ -1,3 +1,4 @@
+import 'package:e_puskesmas/features/poli/data/datasources/poli_sql.dart';
 import 'package:get/get.dart';
 
 class PoliTicketController extends GetxController {
@@ -14,14 +15,30 @@ class PoliTicketController extends GetxController {
   @override
   void onInit() {
     if (args != null) {
-      kodeAntrian(args[0]);
-      jenisPoli(args[1]);
-      namaPasien(args[2]);
-      jenisPasien(args[3]);
-      dokterValue(args[4]);
-      waktu(args[5]);
-      tanggal(args[6]);
+      if (args["id_poli"] != null) {
+        getPoliById(args["id_poli"]);
+      } else {
+        final poli = args["cache_poli"];
+        kodeAntrian(poli[0]);
+        jenisPoli(poli[1]);
+        namaPasien(poli[2]);
+        jenisPasien(poli[3]);
+        dokterValue(poli[4]);
+        waktu(poli[5]);
+        tanggal(poli[6]);
+      }
     }
     super.onInit();
+  }
+
+  void getPoliById(int idPoli) async {
+    final poli = await PoliSql.getSinglepoli(idPoli);
+    kodeAntrian(poli.last["kode_antrian"]);
+    jenisPoli(poli.last["jenis_poli"]);
+    namaPasien(poli.last["nama_pasien"]);
+    jenisPasien(poli.last["jenis_pasien"]);
+    dokterValue(poli.last["dokter"]);
+    waktu(poli.last["waktu"]);
+    tanggal(poli.last["tanggal"]);
   }
 }

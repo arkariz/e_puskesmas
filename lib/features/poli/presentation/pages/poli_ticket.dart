@@ -16,77 +16,79 @@ class PoliTickerScreen extends GetView<PoliTicketController> {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      body: SizedBox(
-        width: size.width,
-        height: size.height,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Center(
-              child: SizedBox(
-                width: size.width * 0.8,
-                height: size.height * 0.4,
-                child: DottedBorder(
-                  borderType: BorderType.RRect,
-                  radius: const Radius.circular(15),
-                  dashPattern: const [8],
-                  strokeWidth: 1,
-                  color: Colors.grey,
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        width: size.width * 0.8,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            const H1Text(text: "Kode Antrian", bold: true),
-                            H1Text(text: controller.kodeAntrian.value, bold: true),
-                            const SizedBox(
-                              height: kDefaultPadding,
-                            ),
-                          ],
+      body: Obx(
+        () => SizedBox(
+          width: size.width,
+          height: size.height,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Center(
+                child: SizedBox(
+                  width: size.width * 0.8,
+                  height: size.height * 0.4,
+                  child: DottedBorder(
+                    borderType: BorderType.RRect,
+                    radius: const Radius.circular(15),
+                    dashPattern: const [8],
+                    strokeWidth: 1,
+                    color: Colors.grey,
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          width: size.width * 0.8,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              const H1Text(text: "Kode Antrian", bold: true),
+                              H1Text(text: controller.kodeAntrian.value, bold: true),
+                              const SizedBox(
+                                height: kDefaultPadding,
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
-                        width: size.width * 0.8,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            H4Text(text: "nama : ${controller.namaPasien.value}", bold: false),
-                            H4Text(text: "Status : ${controller.jenisPasien.value}", bold: false),
-                            H4Text(text: "Tanggal : ${controller.tanggal.value}", bold: false),
-                            H4Text(text: "Waktu : ${controller.waktu.value}", bold: false),
-                            H4Text(text: "Poliklinik : ${controller.jenisPoli.value}", bold: false),
-                            H4Text(text: "Dokter : ${controller.dokterValue.value}", bold: false),
-                          ],
-                        ),
-                      )
-                    ],
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
+                          width: size.width * 0.8,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              H4Text(text: "nama : ${controller.namaPasien.value}", bold: false),
+                              H4Text(text: "Status : ${controller.jenisPasien.value}", bold: false),
+                              H4Text(text: "Tanggal : ${controller.tanggal.value}", bold: false),
+                              H4Text(text: "Waktu : ${controller.waktu.value}", bold: false),
+                              H4Text(text: "Poliklinik : ${controller.jenisPoli.value}", bold: false),
+                              H4Text(text: "Dokter : ${controller.dokterValue.value}", bold: false),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(kDefaultPadding),
-              child: Row(
-                children: const [
-                  Icon(Icons.print),
-                  H4Text(
-                    text: "Cetak Tiket Antrian",
-                    bold: true,
-                    textColor: Colors.teal,
-                  )
-                ],
+              Padding(
+                padding: const EdgeInsets.all(kDefaultPadding),
+                child: Row(
+                  children: const [
+                    Icon(Icons.print),
+                    H4Text(
+                      text: "Cetak Tiket Antrian",
+                      bold: true,
+                      textColor: Colors.teal,
+                    )
+                  ],
+                ),
               ),
-            ),
-            CustomButton(
-                size: size,
-                label: "Kembali",
-                onPressed: () {
-                  Get.offAllNamed(Routes.NAV_BOTTOM);
-                })
-          ],
+              CustomButton(
+                  size: size,
+                  label: "Kembali",
+                  onPressed: () {
+                    Get.offAllNamed(Routes.NAV_BOTTOM);
+                  })
+            ],
+          ),
         ),
       ),
     );

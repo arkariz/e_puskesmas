@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeController extends GetxController {
+  var idPasien = 0.obs;
   var image = "".obs;
   var namaPasien = "".obs;
   var email = "".obs;
@@ -19,7 +20,8 @@ class HomeController extends GetxController {
 
     if (isLogin!) {
       final List<String>? pasien = prefs.getStringList('pasien');
-      namaPasien(pasien![1]);
+      idPasien(int.parse(pasien![0]));
+      namaPasien(pasien[1]);
       statusPasien(pasien[2]);
       email(pasien[3]);
       image(pasien[4]);

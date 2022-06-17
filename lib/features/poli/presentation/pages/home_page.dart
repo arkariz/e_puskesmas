@@ -45,6 +45,7 @@ class HomePage extends GetView<HomeController> {
                     child: Image.asset("assets/images/poli-umum.png"),
                     onTap: () {
                       Get.toNamed(Routes.POLI_FORM, arguments: {
+                        "id_pasien": controller.idPasien.value,
                         "nama": controller.namaPasien.value,
                         "jenis_pasien": controller.statusPasien.value,
                         "poli": "Poli Umum",
@@ -55,6 +56,7 @@ class HomePage extends GetView<HomeController> {
                     child: Image.asset("assets/images/poli-kb.png"),
                     onTap: () {
                       Get.toNamed(Routes.POLI_FORM, arguments: {
+                        "id_pasien": controller.idPasien.value,
                         "nama": controller.namaPasien.value,
                         "jenis_pasien": controller.statusPasien.value,
                         "poli": "Poli KB",
@@ -65,6 +67,7 @@ class HomePage extends GetView<HomeController> {
                     child: Image.asset("assets/images/poli-kia.png"),
                     onTap: () {
                       Get.toNamed(Routes.POLI_FORM, arguments: {
+                        "id_pasien": controller.idPasien.value,
                         "nama": controller.namaPasien.value,
                         "jenis_pasien": controller.statusPasien.value,
                         "poli": "Poli KIA",
@@ -75,6 +78,7 @@ class HomePage extends GetView<HomeController> {
                     child: Image.asset("assets/images/poli-kia.png"),
                     onTap: () {
                       Get.toNamed(Routes.POLI_FORM, arguments: {
+                        "id_pasien": controller.idPasien.value,
                         "nama": controller.namaPasien.value,
                         "jenis_pasien": controller.statusPasien.value,
                         "poli": "Poli KIA",

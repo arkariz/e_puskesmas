@@ -75,7 +75,7 @@ class PoliForm extends GetView<PoliController> {
                       buttonWidth: 0.90,
                       label: "Daftar",
                       onPressed: () {
-                        controller.createPoli();
+                        controller.createPoli(Get.arguments["id_pasien"]);
                       },
                     ),
                   ],

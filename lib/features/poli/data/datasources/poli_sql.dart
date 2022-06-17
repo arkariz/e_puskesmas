@@ -4,15 +4,7 @@ import 'package:flutter/foundation.dart';
 
 class PoliSql {
   // Create new poli
-  static Future<int> createpoli(
-    String kodeAntrian,
-    String jenisPoli,
-    String namaPasien,
-    String jenisPasien,
-    String dokter,
-    String waktu,
-    String tanggal,
-  ) async {
+  static Future<int> createpoli(String kodeAntrian, String jenisPoli, String namaPasien, String jenisPasien, String dokter, String waktu, String tanggal, int idPasien) async {
     final db = await SQLHelper.db();
 
     final data = {
@@ -23,6 +15,7 @@ class PoliSql {
       'dokter': dokter,
       'waktu': waktu,
       'tanggal': tanggal,
+      'id_pasien': idPasien,
     };
     final idpoli = await db.insert('poli', data, conflictAlgorithm: sql.ConflictAlgorithm.replace);
     return idpoli;
@@ -32,6 +25,11 @@ class PoliSql {
   static Future<List<Map<String, dynamic>>> getpoli() async {
     final db = await SQLHelper.db();
     return db.query('poli', orderBy: "id_poli");
+  }
+
+  static Future<List<Map<String, dynamic>>> getPoliByPasienId(int idPasien) async {
+    final db = await SQLHelper.db();
+    return db.query('poli', where: "id_pasien = ?", whereArgs: [idPasien]);
   }
 
   // Read a single item by nim
