@@ -103,6 +103,7 @@ class RegisterUmumForm extends GetView<RegisterController> {
                         size: size,
                         label: "Kode Pos",
                         hint: "Masukkan Kode Pos",
+                        type: TextInputType.number,
                       ),
                       CustomTextField(
                         controller: controller.detailAlamatController.value,
