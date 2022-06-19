@@ -12,9 +12,11 @@ class CustomDropdown extends StatelessWidget {
     required this.label,
     required this.hint,
     this.icon,
+    this.value,
   }) : super(key: key);
 
   final Size size;
+  final String? value;
   final String label;
   final String hint;
   final IconData? icon;
@@ -32,6 +34,7 @@ class CustomDropdown extends StatelessWidget {
           child: SizedBox(
             width: size.width * 0.85,
             child: DropdownButtonFormField2(
+              value: value,
               decoration: InputDecoration(
                 isDense: true,
                 contentPadding: EdgeInsets.zero,

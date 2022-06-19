@@ -47,7 +47,7 @@ class RegisterController extends GetxController {
   var provValue = "".obs;
 
   void onSelectProv(String value) {
-    genderValue(value);
+    provValue(value);
   }
 
   final List<String> kabItems = [
@@ -58,7 +58,7 @@ class RegisterController extends GetxController {
   var kabValue = "".obs;
 
   void onSelectkab(String value) {
-    genderValue(value);
+    kabValue(value);
   }
 
   void createPasien() async {

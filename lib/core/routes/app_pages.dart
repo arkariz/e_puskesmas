@@ -1,5 +1,11 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:e_puskesmas/features/admin/presentation/binding/update_user_binding.dart';
+import 'package:e_puskesmas/features/admin/presentation/binding/user_list_binding.dart';
+import 'package:e_puskesmas/features/admin/presentation/pages/select_user_page.dart';
+import 'package:e_puskesmas/features/admin/presentation/pages/update_bpjs_form.dart';
+import 'package:e_puskesmas/features/admin/presentation/pages/update_umum_form.dart';
+import 'package:e_puskesmas/features/admin/presentation/pages/user_list_page.dart';
 import 'package:e_puskesmas/features/poli/presentation/binding/home_binding.dart';
 import 'package:e_puskesmas/features/poli/presentation/binding/navigation_binding.dart';
 import 'package:e_puskesmas/features/poli/presentation/binding/poli_binding.dart';
@@ -71,6 +77,25 @@ class AppPages {
       name: _Paths.LIST_POLI,
       page: () => PoliTicketListPage(),
       binding: NavigationBottomBinding(),
+    ),
+    GetPage(
+      name: _Paths.LIST_USER,
+      page: () => UserListPage(),
+      binding: UserListBinding(),
+    ),
+    GetPage(
+      name: _Paths.PILIH_PASIEN,
+      page: () => SelectUserPage(),
+    ),
+    GetPage(
+      name: _Paths.UPDATE_PASIEN_BPJS,
+      page: () => UpdateBpjsForm(),
+      binding: UpdateUserBinding(),
+    ),
+    GetPage(
+      name: _Paths.UPDATE_PASIEN_UMUM,
+      page: () => UpdateUmumForm(),
+      binding: UpdateUserBinding(),
     ),
   ];
 }
