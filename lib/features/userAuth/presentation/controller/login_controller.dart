@@ -22,43 +22,49 @@ class LoginController extends GetxController {
       if (emailController.value.text == "" || sandiController.value.text == "") {
         throw Exception("Email dan Password Harus diisi");
       }
-      final pasien = await PasienSql.getSinglePasien(
-        emailController.value.text,
-        sandiController.value.text,
-      );
 
-      // Obtain shared preferences.
-      final prefs = await SharedPreferences.getInstance();
-      await prefs.setStringList('pasien', <String>[
-        pasien.last['id_pasien'].toString(),
-        pasien.last['nama_lengkap'],
-        pasien.last['status_pasien'],
-        pasien.last['email'],
-        pasien.last['foto_profile_path'],
-      ]);
+      if (emailController.value.text == "admin" || sandiController.value.text == "admin") {
+        final prefs = await SharedPreferences.getInstance();
+        await prefs.setString('isLogin', "admin login");
+        Get.offNamed(Routes.PILIH_PASIEN);
+      } else {
+        final pasien = await PasienSql.getSinglePasien(
+          emailController.value.text,
+          sandiController.value.text,
+        );
 
-      await prefs.setBool('isLogin', true);
+        // Obtain shared preferences.
+        final prefs = await SharedPreferences.getInstance();
+        await prefs.setStringList('pasien', <String>[
+          pasien.last['id_pasien'].toString(),
+          pasien.last['nama_lengkap'],
+          pasien.last['status_pasien'],
+          pasien.last['email'],
+          pasien.last['foto_profile_path'],
+        ]);
 
-      //set pasien data cache
-      await prefs.setStringList('data_pasien', <String>[
-        pasien.last['id_pasien'].toString(),
-        pasien.last['status_pasien'],
-        pasien.last['nama_lengkap'],
-        pasien.last['email'],
-        pasien.last['password'],
-        pasien.last['nama_kk'],
-        pasien.last['jenis_kelamin'],
-        pasien.last['provinsi'],
-        pasien.last['kabupaten'],
-        pasien.last['kode_Pos'],
-        pasien.last['detail_alamat'],
-        pasien.last['foto_profile_path'],
-        pasien.last['kk_path'],
-        pasien.last['ktp_path'],
-        pasien.last['bpjs_path'],
-      ]);
+        await prefs.setString('isLogin', "pasien login");
 
-      Get.offNamed(Routes.NAV_BOTTOM);
+        //set pasien data cache
+        await prefs.setStringList('data_pasien', <String>[
+          pasien.last['id_pasien'].toString(),
+          pasien.last['status_pasien'],
+          pasien.last['nama_lengkap'],
+          pasien.last['email'],
+          pasien.last['password'],
+          pasien.last['nama_kk'],
+          pasien.last['jenis_kelamin'],
+          pasien.last['provinsi'],
+          pasien.last['kabupaten'],
+          pasien.last['kode_Pos'],
+          pasien.last['detail_alamat'],
+          pasien.last['foto_profile_path'],
+          pasien.last['kk_path'],
+          pasien.last['ktp_path'],
+          pasien.last['bpjs_path'],
+        ]);
+        Get.offNamed(Routes.NAV_BOTTOM);
+      }
     } catch (e) {
       if (e.toString() == "Bad state: No element") {
         Get.snackbar("E-Puskesmas", "User Tidak ditemukan");
@@ -70,13 +76,15 @@ class LoginController extends GetxController {
 
   void checkIfLoggedIn() async {
     final prefs = await SharedPreferences.getInstance();
-    final bool? isLogin = prefs.getBool("isLogin");
+    final String? isLogin = prefs.getString("isLogin");
 
     if (isLogin == null) {
-      await prefs.setBool('isLogin', false);
+      await prefs.setString('isLogin', "logout");
     } else {
-      if (isLogin) {
+      if (isLogin == "pasien login") {
         Get.offNamed(Routes.NAV_BOTTOM);
+      } else if (isLogin == "admin login") {
+        Get.offNamed(Routes.PILIH_PASIEN);
       }
     }
   }

@@ -16,9 +16,9 @@ class HomeController extends GetxController {
 
   void getPasien() async {
     final prefs = await SharedPreferences.getInstance();
-    final bool? isLogin = prefs.getBool("isLogin");
+    final String? isLogin = prefs.getString("isLogin");
 
-    if (isLogin!) {
+    if (isLogin! == "pasien login") {
       final List<String>? pasien = prefs.getStringList('pasien');
       idPasien(int.parse(pasien![0]));
       namaPasien(pasien[1]);
