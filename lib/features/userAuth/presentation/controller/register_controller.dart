@@ -26,7 +26,10 @@ class RegisterController extends GetxController {
   final fotoKtp = "".obs;
   final fotoBpjs = "".obs;
 
-  String statusPasien = Get.arguments;
+  final statusPasien = "".obs;
+  final isAdmin = false.obs;
+
+  final args = Get.arguments;
 
   final List<String> menuItems = [
     'Laki-Laki',
@@ -61,10 +64,24 @@ class RegisterController extends GetxController {
     kabValue(value);
   }
 
+  @override
+  void onInit() {
+    if (args != null) {
+      if (args["jenis_pasien"] != null) {
+        statusPasien(args["jenis_pasien"]);
+      }
+
+      if (args["isAdmin"] != null) {
+        isAdmin(args["isAdmin"]);
+      }
+    }
+    super.onInit();
+  }
+
   void createPasien() async {
     try {
       await PasienSql.createPasien(
-        statusPasien,
+        statusPasien.value,
         namaController.value.text,
         emailController.value.text,
         sandiController.value.text,
@@ -80,7 +97,11 @@ class RegisterController extends GetxController {
         fotoBpjs.value,
       );
 
-      Get.offNamed(Routes.LOGIN);
+      if (isAdmin.value) {
+        Get.offNamedUntil(Routes.LIST_USER, ModalRoute.withName(Routes.PILIH_PASIEN), arguments: {"jenis_pasien": statusPasien.value});
+      } else {
+        Get.offNamed(Routes.LOGIN);
+      }
       Get.snackbar("E-Puskesmas", "Pendaftaran Berhasil");
     } catch (e) {
       Get.snackbar("E-Puskesmas", "Terjadi Kesalahan");

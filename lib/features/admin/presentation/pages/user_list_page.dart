@@ -35,6 +35,31 @@ class UserListPage extends GetView<UserListController> {
                   H2Text(text: controller.jenisPasien.value, bold: true),
                 ],
               ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
+                child: ListTile(
+                  leading: const Icon(
+                    Icons.person,
+                    color: Colors.black87,
+                  ),
+                  title: const H3Text(text: "Nama", bold: true),
+                  shape: const Border(bottom: BorderSide(color: Colors.grey)),
+                  trailing: GestureDetector(
+                    onTap: () {
+                      // [x] Get to register user action trigger
+                      if (controller.jenisPasien.value == "Pasien Umum") {
+                        Get.toNamed(Routes.REG_PASIEN_UMUM, arguments: {"isAdmin": true, "jenis_pasien": controller.jenisPasien.value});
+                      } else {
+                        Get.toNamed(Routes.REG_PASIEN_BPJS, arguments: {"isAdmin": true, "jenis_pasien": controller.jenisPasien.value});
+                      }
+                    },
+                    child: const Icon(
+                      Icons.add_circle_outlined,
+                      color: Colors.teal,
+                    ),
+                  ),
+                ),
+              ),
               controller.userList.isEmpty
                   ? const Padding(
                       padding: EdgeInsets.only(top: 50),
@@ -43,7 +68,7 @@ class UserListPage extends GetView<UserListController> {
                   : ListView.builder(
                       shrinkWrap: true,
                       padding: const EdgeInsets.only(
-                        top: kDefaultPadding * 2,
+                        top: kDefaultPadding,
                         left: kDefaultPadding,
                         right: kDefaultPadding,
                       ),
@@ -55,23 +80,15 @@ class UserListPage extends GetView<UserListController> {
                             bold: true,
                           ),
                           subtitle: H4Text(text: "${controller.userList[index]["email"]}", bold: false),
-                          shape: const Border(
-                            bottom: BorderSide(color: Colors.grey),
-                          ),
+                          shape: const Border(bottom: BorderSide(color: Colors.grey)),
+                          // [x] Get to user's Poli Ticket List Action Trigger
                           onTap: () {
-                            controller.jenisPasien.value == "Pasien Umum"
-                                ? Get.toNamed(
-                                    Routes.UPDATE_PASIEN_UMUM,
-                                    arguments: {
-                                      "id_pasien": controller.userList[index]["id_pasien"],
-                                    },
-                                  )
-                                : Get.toNamed(
-                                    Routes.UPDATE_PASIEN_BPJS,
-                                    arguments: {
-                                      "id_pasien": controller.userList[index]["id_pasien"],
-                                    },
-                                  );
+                            Get.toNamed(
+                              Routes.LIST_POLI,
+                              arguments: {
+                                "id_pasien": controller.userList[index]["id_pasien"],
+                              },
+                            );
                           },
                           trailing: GestureDetector(
                             child: const Icon(Icons.more_horiz_outlined),
