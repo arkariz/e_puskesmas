@@ -4,6 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class PoliTicketListController extends GetxController {
   final listTicket = List<Map<String, dynamic>>.empty().obs;
+  final args = Get.arguments;
 
   @override
   void onInit() {
@@ -12,10 +13,15 @@ class PoliTicketListController extends GetxController {
   }
 
   void getAllPoliByPasienId() async {
-    final prefs = await SharedPreferences.getInstance();
-    final List<String>? pasien = prefs.getStringList('pasien');
+    if (args != null) {
+      final poli = await PoliSql.getPoliByPasienId(args["id_pasien"]);
+      listTicket(poli);
+    } else {
+      final prefs = await SharedPreferences.getInstance();
+      final List<String>? pasien = prefs.getStringList('pasien');
 
-    final poli = await PoliSql.getPoliByPasienId(int.parse(pasien![0]));
-    listTicket(poli);
+      final poli = await PoliSql.getPoliByPasienId(int.parse(pasien![0]));
+      listTicket(poli);
+    }
   }
 }
