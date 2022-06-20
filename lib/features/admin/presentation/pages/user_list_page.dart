@@ -5,6 +5,7 @@ import 'package:e_puskesmas/core/widgets/h2_text.dart';
 import 'package:e_puskesmas/core/widgets/h3_text.dart';
 import 'package:e_puskesmas/core/widgets/h4_text.dart';
 import 'package:e_puskesmas/features/admin/presentation/controller/user_list_controller.dart';
+import 'package:e_puskesmas/features/admin/presentation/widgets/pasien_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -72,6 +73,12 @@ class UserListPage extends GetView<UserListController> {
                                     },
                                   );
                           },
+                          trailing: GestureDetector(
+                            child: const Icon(Icons.more_horiz_outlined),
+                            onTap: () {
+                              Get.dialog(pasienDialog(context, controller, index));
+                            },
+                          ),
                         );
                       },
                     ),

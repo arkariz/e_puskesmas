@@ -2,7 +2,7 @@ import 'package:e_puskesmas/features/userAuth/data/datasources/pasien_sql.dart';
 import 'package:get/get.dart';
 
 class UserListController extends GetxController {
-  final userList = List<Map<String, dynamic>>.empty().obs;
+  var userList = List<Map<String, dynamic>>.empty(growable: true).obs;
   final jenisPasien = "".obs;
 
   final args = Get.arguments;
@@ -16,8 +16,15 @@ class UserListController extends GetxController {
     super.onInit();
   }
 
+  // [x] Get all pasien Function
   void getAllUser(String jenisPasien) async {
     final users = await PasienSql.getPasienByJenis(jenisPasien);
     userList(users);
+  }
+
+  // [x] Delete Pasien Function
+  void deleteUser(int idPasien) async {
+    await PasienSql.deletePasien(idPasien);
+    getAllUser(args['jenis_pasien']);
   }
 }

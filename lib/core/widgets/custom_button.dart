@@ -8,12 +8,13 @@ class CustomButton extends StatelessWidget {
     this.buttonWidth,
     required this.label,
     this.textColor,
-    required this.onPressed,
+    required this.onPressed, this.buttonColor,
   }) : super(key: key);
 
   final Size size;
   final double? buttonWidth;
   final String label;
+  final Color? buttonColor;
   final Color? textColor;
   final VoidCallback onPressed;
 
@@ -24,6 +25,7 @@ class CustomButton extends StatelessWidget {
       height: 45,
       child: ElevatedButton(
         onPressed: onPressed,
+        style: buttonColor != null ? ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(buttonColor!)) : null,
         child: H2Text(
           text: label,
           bold: false,

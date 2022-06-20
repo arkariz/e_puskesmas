@@ -1,9 +1,7 @@
 import 'package:e_puskesmas/core/routes/app_pages.dart';
-import 'package:e_puskesmas/core/utils/image_picker.dart';
 import 'package:e_puskesmas/features/userAuth/data/datasources/pasien_sql.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
 
 class UpdateController extends GetxController {
   final namaController = TextEditingController().obs;
@@ -97,6 +95,7 @@ class UpdateController extends GetxController {
     return null;
   }
 
+  //[x] Update selected pasien
   void updatePasien() async {
     try {
       await PasienSql.updatePasien(
@@ -117,13 +116,14 @@ class UpdateController extends GetxController {
         dataPasien["bpjs_path"],
       );
 
-      Get.back();
+      Get.offNamed(Routes.LIST_USER, arguments: {"jenis_pasien": dataPasien["status_pasien"]});
       Get.snackbar("E-Puskesmas", "Data Berhasil Di Ubah");
     } catch (e) {
       Get.snackbar("E-Puskesmas", "Terjadi Kesalahan");
     }
   }
 
+  //[x] Get user by id to initiate data for update
   void getPasienById(int idPasien) async {
     isLoading(true);
     final pasien = await PasienSql.getSinglePasienById(idPasien);
@@ -142,10 +142,6 @@ class UpdateController extends GetxController {
     fotoKk(dataPasien["kk_path"]);
     fotoKtp(dataPasien["ktp_path"]);
     fotoBpjs(dataPasien["bpjs_path"]);
-
-    print(genderValue.value);
-    print(provValue.value);
-    print(kabValue.value);
 
     isLoading(false);
   }

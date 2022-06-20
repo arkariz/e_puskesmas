@@ -40,12 +40,22 @@ class UpdateImagePicker extends StatelessWidget {
                   if (controller.fotoBpjs.value == "") ...[
                     UploadPlaceholder(size: size, label: "Tambahkan Foto"),
                   ] else ...[
-                    const SizedBox()
+                    UpdateImagePlaceholder(
+                      size: size,
+                      controller: controller,
+                      imagePath: controller.fotoBpjs.value,
+                      jenisDokumen: jenisDokumen,
+                    ),
                   ]
                 else if (controller.fotoKtp.value == "") ...[
                   UploadPlaceholder(size: size, label: "Tambahkan Foto"),
                 ] else ...[
-                  const SizedBox()
+                  UpdateImagePlaceholder(
+                      size: size,
+                      controller: controller,
+                      imagePath: controller.fotoKtp.value,
+                      jenisDokumen: jenisDokumen,
+                    ),
                 ]
               ],
             ),
