@@ -2,6 +2,7 @@ import 'package:e_puskesmas/core/utils/sql_helper.dart';
 import 'package:sqflite/sqflite.dart' as sql;
 import 'package:flutter/foundation.dart';
 
+// [ ] Revisi Pasien Field
 class PasienSql {
   // Create new Pasien
   static Future<int> createPasien(
@@ -58,6 +59,12 @@ class PasienSql {
   static Future<List<Map<String, dynamic>>> getSinglePasienById(int pasienId) async {
     final db = await SQLHelper.db();
     return db.query('pasien', where: "id_pasien = ? ", whereArgs: [pasienId], limit: 1);
+  }
+
+  // Read a item by name
+  static Future<List<Map<String, dynamic>>> getSinglePasienByName(String name, String jenisPasien) async {
+    final db = await SQLHelper.db();
+    return db.rawQuery("SELECT * FROM pasien WHERE status_pasien = '$jenisPasien' AND nama_lengkap LIKE '%$name%'");
   }
 
   static Future<List<Map<String, dynamic>>> getPasienByJenis(String jenisPasien) async {

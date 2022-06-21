@@ -17,6 +17,7 @@ class CustomTextField extends StatefulWidget {
     this.onPressed,
     required this.hint,
     this.isPassword,
+    this.noLabel,
   }) : super(key: key);
 
   final TextEditingController controller;
@@ -25,6 +26,7 @@ class CustomTextField extends StatefulWidget {
   final Icon? icon;
   final Icon? suffixIcon;
   final String label;
+  final bool? noLabel;
   final String hint;
   final TextInputType? type;
   final int? maxLines;
@@ -41,7 +43,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        H5Text(text: widget.label, bold: false),
+        widget.noLabel != null ? const SizedBox() : H5Text(text: widget.label, bold: false),
         Padding(
           padding: const EdgeInsets.only(bottom: kDefaultPadding, top: kLabelPadding),
           child: SizedBox(
@@ -64,7 +66,10 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 prefixIcon: widget.icon,
                 labelStyle: const TextStyle(color: Colors.black38),
                 suffixIcon: widget.suffixIcon == null ? widget.suffixIcon : IconButton(onPressed: widget.onPressed ?? () {}, icon: widget.suffixIcon!),
-                border: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: const BorderSide(color: Colors.black26)),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: const BorderSide(color: Colors.black26),
+                ),
               ),
               textInputAction: TextInputAction.done,
             ),
