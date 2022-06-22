@@ -46,6 +46,7 @@ class ProfileController extends GetxController {
     await prefs.setString('isLogin', "logout");
     Get.offNamed(Routes.LOGIN);
   }
+  // [x] Revisi Pasien Field
 
   void updateFoto() async {
     // try {
@@ -58,19 +59,21 @@ class ProfileController extends GetxController {
       await PasienSql.updatePasien(
         pasien.last["id_pasien"],
         pasien.last['status_pasien'],
-        pasien.last['nama_lengkap'],
         pasien.last['email'],
         pasien.last['password'],
+        pasien.last['no_rekam_medis'],
+        pasien.last['no_bpjs'],
+        pasien.last['nama_lengkap'],
         pasien.last['nama_kk'],
+        pasien.last['tanggal_lahir'],
+        pasien.last['tempat_lahir'],
+        pasien.last['usia'],
         pasien.last['jenis_kelamin'],
-        pasien.last['provinsi'],
-        pasien.last['kabupaten'],
-        pasien.last['kode_Pos'],
         pasien.last['detail_alamat'],
-        file.path,
         pasien.last['kk_path'],
         pasien.last['ktp_path'],
         pasien.last['bpjs_path'],
+        file.path,
       );
 
       await prefs.setStringList('pasien', <String>[
@@ -100,19 +103,21 @@ class ProfileController extends GetxController {
       await PasienSql.updatePasien(
         pasien.last["id_pasien"],
         pasien.last['status_pasien'],
-        namaTextController.value.text,
         emailTextController.value.text,
         pasien.last['password'],
+        pasien.last['no_rekam_medis'],
+        pasien.last['no_bpjs'],
+        namaTextController.value.text,
         pasien.last['nama_kk'],
+        pasien.last['tanggal_lahir'],
+        pasien.last['tempat_lahir'],
+        pasien.last['usia'],
         pasien.last['jenis_kelamin'],
-        pasien.last['provinsi'],
-        pasien.last['kabupaten'],
-        pasien.last['kode_Pos'],
         pasien.last['detail_alamat'],
-        pasien.last['foto_profile_path'],
         pasien.last['kk_path'],
         pasien.last['ktp_path'],
         pasien.last['bpjs_path'],
+        pasien.last['foto_profile_path'],
       );
 
       await prefs.setStringList('pasien', <String>[
