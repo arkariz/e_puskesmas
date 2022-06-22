@@ -10,6 +10,7 @@ import 'package:e_puskesmas/features/userAuth/presentation/widgets/register_umum
 import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
 
+// [ ] Revisi form field
 class UpdateBpjsForm extends GetView<UpdateController> {
   UpdateBpjsForm({Key? key}) : super(key: key);
 
@@ -35,7 +36,7 @@ class UpdateBpjsForm extends GetView<UpdateController> {
                     bottom: kTopPadding,
                   ),
                   child: controller.isLoading.value
-                      ? CircularProgressIndicator()
+                      ? const CircularProgressIndicator()
                       : Form(
                           key: formFieldKey,
                           child: Column(
@@ -43,13 +44,6 @@ class UpdateBpjsForm extends GetView<UpdateController> {
                             children: [
                               const H3Text(text: "Informasi akun", bold: true),
                               const SizedBox(height: kDefaultPadding),
-                              CustomTextField(
-                                controller: controller.namaController.value,
-                                node: controller.namaNode.value,
-                                size: size,
-                                label: "Nama Lengkap",
-                                hint: "Masukkan Nama",
-                              ),
                               CustomTextField(
                                 controller: controller.emailController.value,
                                 node: controller.emailNode.value,
@@ -69,11 +63,53 @@ class UpdateBpjsForm extends GetView<UpdateController> {
                               const H3Text(text: "Data diri", bold: true),
                               const SizedBox(height: kDefaultPadding),
                               CustomTextField(
+                                controller: controller.noRekamMedisController.value,
+                                node: controller.noRekamMedisNode.value,
+                                size: size,
+                                label: "No Rekam Medis",
+                                hint: "Masukkan No Rekam Medis",
+                              ),
+                              CustomTextField(
+                                controller: controller.noBpjsController.value,
+                                node: controller.noBpjsNode.value,
+                                size: size,
+                                label: "No BPJS",
+                                hint: "Masukkan No BPJS",
+                              ),
+                              CustomTextField(
+                                controller: controller.namaController.value,
+                                node: controller.namaNode.value,
+                                size: size,
+                                label: "Nama Lengkap",
+                                hint: "Masukkan Nama",
+                              ),
+                              CustomTextField(
                                 controller: controller.namaKKController.value,
                                 node: controller.namaKKNode.value,
                                 size: size,
                                 label: "Nama Kartu Keluarga",
                                 hint: "Nama Kartu Keluarga",
+                              ),
+                              CustomTextField(
+                                controller: controller.tanggalLahirController.value,
+                                node: controller.tanggalLahirNode.value,
+                                size: size,
+                                label: "Tanggal Lahir",
+                                hint: "Masukkan Tanggal Lahir",
+                              ),
+                              CustomTextField(
+                                controller: controller.tempatLahirController.value,
+                                node: controller.tempatLahirNode.value,
+                                size: size,
+                                label: "Tempat Lahir",
+                                hint: "Masukkan Tempat Lahir",
+                              ),
+                              CustomTextField(
+                                controller: controller.usiaController.value,
+                                node: controller.usiaNode.value,
+                                size: size,
+                                label: "Usia",
+                                hint: "Masukkan Usia",
                               ),
                               CustomDropdown(
                                 label: "Jenis Kelamni",
@@ -85,35 +121,11 @@ class UpdateBpjsForm extends GetView<UpdateController> {
                               ),
                               const H3Text(text: "Alamat", bold: true),
                               const SizedBox(height: kDefaultPadding),
-                              CustomDropdown(
-                                label: "Provinsi",
-                                hint: "Pilih Provinsi",
-                                size: size,
-                                menuItems: controller.provItems,
-                                onChangeValue: controller.onSelectProv,
-                                value: controller.initProvValue(),
-                              ),
-                              CustomDropdown(
-                                label: "Kabupaten/Kota",
-                                hint: "Pilih Kabupaten/Kota",
-                                size: size,
-                                menuItems: controller.kabItems,
-                                onChangeValue: controller.onSelectkab,
-                                value: controller.initKabValue(),
-                              ),
-                              CustomTextField(
-                                controller: controller.kodeposController.value,
-                                node: controller.kodeposNode.value,
-                                size: size,
-                                label: "Kode Pos",
-                                hint: "Masukkan Kode Pos",
-                                type: TextInputType.number,
-                              ),
                               CustomTextField(
                                 controller: controller.detailAlamatController.value,
                                 node: controller.detailAlamatNode.value,
                                 size: size,
-                                label: "Detail alamat lainnya",
+                                label: "Detail alamat",
                                 hint: "",
                                 maxLines: 4,
                               ),
