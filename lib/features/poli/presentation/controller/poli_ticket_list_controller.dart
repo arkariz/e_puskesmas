@@ -12,6 +12,7 @@ class PoliTicketListController extends GetxController {
     super.onInit();
   }
 
+  //[ ] Poli list not state aware
   void getAllPoliByPasienId() async {
     if (args != null) {
       final poli = await PoliSql.getPoliByPasienId(args["id_pasien"]);
