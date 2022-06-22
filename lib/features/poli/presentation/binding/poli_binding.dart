@@ -1,5 +1,6 @@
 import 'package:e_puskesmas/features/poli/presentation/controller/home_controller.dart';
 import 'package:e_puskesmas/features/poli/presentation/controller/poli_controller.dart';
+import 'package:e_puskesmas/features/poli/presentation/controller/poli_ticket_list_controller.dart';
 import 'package:get/get.dart';
 
 class PoliBinding extends Bindings {
@@ -7,6 +8,9 @@ class PoliBinding extends Bindings {
   void dependencies() {
     Get.lazyPut<PoliController>(
       () => PoliController(),
+    );
+    Get.lazyPut<PoliTicketListController>(
+      () => PoliTicketListController(),
     );
   }
 }

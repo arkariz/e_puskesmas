@@ -6,14 +6,16 @@ class PoliTicketListController extends GetxController {
   final listTicket = List<Map<String, dynamic>>.empty().obs;
   final args = Get.arguments;
 
+  final isLoading = false.obs;
+
   @override
   void onInit() {
     getAllPoliByPasienId();
     super.onInit();
   }
 
-  //[ ] Poli list not state aware
   void getAllPoliByPasienId() async {
+    isLoading(true);
     if (args != null) {
       final poli = await PoliSql.getPoliByPasienId(args["id_pasien"]);
       listTicket(poli);
@@ -24,5 +26,6 @@ class PoliTicketListController extends GetxController {
       final poli = await PoliSql.getPoliByPasienId(int.parse(pasien![0]));
       listTicket(poli);
     }
+    isLoading(false);
   }
 }

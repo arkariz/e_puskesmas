@@ -75,13 +75,13 @@ class HomePage extends GetView<HomeController> {
                     },
                   ),
                   GestureDetector(
-                    child: Image.asset("assets/images/poli-kia.png"),
+                    child: Image.asset("assets/images/poli-anak.png"),
                     onTap: () {
                       Get.toNamed(Routes.POLI_FORM, arguments: {
                         "id_pasien": controller.idPasien.value,
                         "nama": controller.namaPasien.value,
                         "jenis_pasien": controller.statusPasien.value,
-                        "poli": "Poli KIA",
+                        "poli": "Poli Anak",
                       });
                     },
                   )

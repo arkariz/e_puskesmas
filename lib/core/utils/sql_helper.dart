@@ -2,7 +2,6 @@ import 'package:sqflite/sqflite.dart' as sql;
 
 class SQLHelper {
   static Future<void> createTables(sql.Database database) async {
-    // [x] Revisi pasien field
     await database.execute("""CREATE TABLE pasien(
         id_pasien INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
         status_pasien TEXT,
@@ -31,8 +30,7 @@ class SQLHelper {
         nama_pasien TEXT,
         jenis_pasien TEXT,
         dokter TEXT,
-        waktu TEXT,
-        tanggal TEXT,
+        jadwal TEXT,
         id_pasien INTEGER
       )
       """);
@@ -41,7 +39,7 @@ class SQLHelper {
   static Future<sql.Database> db() async {
     return sql.openDatabase(
       'puskesmas.db',
-      version: 5,
+      version: 6,
       onCreate: (sql.Database database, int version) async {
         await createTables(database);
       },

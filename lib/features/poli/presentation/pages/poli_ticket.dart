@@ -56,10 +56,18 @@ class PoliTickerScreen extends GetView<PoliTicketController> {
                             children: [
                               H4Text(text: "nama : ${controller.namaPasien.value}", bold: false),
                               H4Text(text: "Status : ${controller.jenisPasien.value}", bold: false),
-                              H4Text(text: "Tanggal : ${controller.tanggal.value}", bold: false),
-                              H4Text(text: "Waktu : ${controller.waktu.value}", bold: false),
+                              H4Text(text: "Jadwal : ${controller.jadwal.value}", bold: false),
                               H4Text(text: "Poliklinik : ${controller.jenisPoli.value}", bold: false),
-                              H4Text(text: "Dokter : ${controller.dokterValue.value}", bold: false),
+                              if (controller.jenisPoli.value == "Poli KB" || controller.jenisPoli.value == "Poli KIA")
+                                H4Text(
+                                  text: "Bidan : ${controller.dokterValue.value}",
+                                  bold: false,
+                                )
+                              else
+                                H4Text(
+                                  text: "Dokter : ${controller.dokterValue.value}",
+                                  bold: false,
+                                ),
                             ],
                           ),
                         )
@@ -85,7 +93,7 @@ class PoliTickerScreen extends GetView<PoliTicketController> {
                   size: size,
                   label: "Kembali",
                   onPressed: () {
-                    Get.back();
+                    Get.offNamed(Routes.NAV_BOTTOM);
                   })
             ],
           ),

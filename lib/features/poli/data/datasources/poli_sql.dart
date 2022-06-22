@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 
 class PoliSql {
   // Create new poli
-  static Future<int> createpoli(String kodeAntrian, String jenisPoli, String namaPasien, String jenisPasien, String dokter, String waktu, String tanggal, int idPasien) async {
+  static Future<int> createpoli(String kodeAntrian, String jenisPoli, String namaPasien, String jenisPasien, String dokter, String jadwal, int idPasien) async {
     final db = await SQLHelper.db();
 
     final data = {
@@ -13,8 +13,7 @@ class PoliSql {
       'nama_pasien': namaPasien,
       'jenis_pasien': jenisPasien,
       'dokter': dokter,
-      'waktu': waktu,
-      'tanggal': tanggal,
+      'jadwal': jadwal,
       'id_pasien': idPasien,
     };
     final idpoli = await db.insert('poli', data, conflictAlgorithm: sql.ConflictAlgorithm.replace);
@@ -46,7 +45,7 @@ class PoliSql {
     String namaPasien,
     String jenisPasien,
     String dokter,
-    String waktu,
+    String jadwal,
   ) async {
     final db = await SQLHelper.db();
 
@@ -56,7 +55,7 @@ class PoliSql {
       'nama_lengkap': namaPasien,
       'jenis_pasien': jenisPasien,
       'dokter': dokter,
-      'waktu': waktu,
+      'jadwal': jadwal,
     };
 
     final result = await db.update('poli', data, where: "id_poli = ?", whereArgs: [idpoli]);

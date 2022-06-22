@@ -8,8 +8,7 @@ class PoliTicketController extends GetxController {
   var jenisPoli = "".obs;
   var namaPasien = "".obs;
   var jenisPasien = "".obs;
-  var waktu = "".obs;
-  var tanggal = "".obs;
+  var jadwal = "".obs;
   var dokterValue = "".obs;
 
   @override
@@ -24,21 +23,20 @@ class PoliTicketController extends GetxController {
         namaPasien(poli[2]);
         jenisPasien(poli[3]);
         dokterValue(poli[4]);
-        waktu(poli[5]);
-        tanggal(poli[6]);
+        jadwal(poli[5]);
       }
     }
     super.onInit();
   }
 
   void getPoliById(int idPoli) async {
+
     final poli = await PoliSql.getSinglepoli(idPoli);
     kodeAntrian(poli.last["kode_antrian"]);
     jenisPoli(poli.last["jenis_poli"]);
     namaPasien(poli.last["nama_pasien"]);
     jenisPasien(poli.last["jenis_pasien"]);
     dokterValue(poli.last["dokter"]);
-    waktu(poli.last["waktu"]);
-    tanggal(poli.last["tanggal"]);
+    jadwal(poli.last["jadwal"]);
   }
 }

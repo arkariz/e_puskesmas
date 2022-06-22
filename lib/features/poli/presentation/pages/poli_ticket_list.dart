@@ -18,45 +18,47 @@ class PoliTicketListPage extends GetView<PoliTicketListController> {
     return Scaffold(
       body: Obx(
         () => SingleChildScrollView(
-          child: Column(
-            children: [
-              SizedBox(height: size.height * 0.1),
-              const H2Text(text: "Riwayat Pemeriksaan Anda", bold: true),
-              controller.listTicket.isEmpty
-                  ? const Padding(
-                      padding: EdgeInsets.only(top: 50),
-                      child: H1Text(text: "Belum Ada Pemeriksaan", bold: true),
-                    )
-                  : SizedBox(
-                      width: size.width,
-                      height: size.height * 0.9,
-                      child: ListView.builder(
-                        padding: EdgeInsets.only(
-                          top: kDefaultPadding * 2,
-                          left: kDefaultPadding,
-                          right: kDefaultPadding,
-                          bottom: size.height * 0.15,
-                        ),
-                        itemCount: controller.listTicket.length,
-                        itemBuilder: (context, index) {
-                          return ListTile(
-                            title: H3Text(
-                              text: "${controller.listTicket[index]["kode_antrian"]} (Dr. ${controller.listTicket[index]["dokter"]})",
-                              bold: true,
+          child: controller.isLoading.value
+              ? const CircularProgressIndicator()
+              : Column(
+                  children: [
+                    SizedBox(height: size.height * 0.1),
+                    const H2Text(text: "Riwayat Pemeriksaan Anda", bold: true),
+                    controller.listTicket.isEmpty
+                        ? const Padding(
+                            padding: EdgeInsets.only(top: 50),
+                            child: H1Text(text: "Belum Ada Pemeriksaan", bold: true),
+                          )
+                        : SizedBox(
+                            width: size.width,
+                            height: size.height * 0.9,
+                            child: ListView.builder(
+                              padding: EdgeInsets.only(
+                                top: kDefaultPadding * 2,
+                                left: kDefaultPadding,
+                                right: kDefaultPadding,
+                                bottom: size.height * 0.15,
+                              ),
+                              itemCount: controller.listTicket.length,
+                              itemBuilder: (context, index) {
+                                return ListTile(
+                                  title: H3Text(
+                                    text: "${controller.listTicket[index]["kode_antrian"]} (Dr. ${controller.listTicket[index]["dokter"]})",
+                                    bold: true,
+                                  ),
+                                  subtitle: H4Text(text: "Poliklinik : ${controller.listTicket[index]["jenis_poli"]}", bold: false),
+                                  shape: const Border(
+                                    bottom: BorderSide(color: Colors.grey),
+                                  ),
+                                  onTap: () {
+                                    Get.toNamed(Routes.POLI_TICKET, arguments: {"id_poli": controller.listTicket[index]["id_poli"]});
+                                  },
+                                );
+                              },
                             ),
-                            subtitle: H4Text(text: "Poliklinik : ${controller.listTicket[index]["jenis_poli"]}", bold: false),
-                            shape: const Border(
-                              bottom: BorderSide(color: Colors.grey),
-                            ),
-                            onTap: () {
-                              Get.toNamed(Routes.POLI_TICKET, arguments: {"id_poli": controller.listTicket[index]["id_poli"]});
-                            },
-                          );
-                        },
-                      ),
-                    ),
-            ],
-          ),
+                          ),
+                  ],
+                ),
         ),
       ),
     );

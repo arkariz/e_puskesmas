@@ -10,7 +10,6 @@ import 'package:e_puskesmas/features/userAuth/presentation/widgets/register_umum
 import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
 
-// [ ] Revisi form field
 class UpdateBpjsForm extends GetView<UpdateController> {
   UpdateBpjsForm({Key? key}) : super(key: key);
 

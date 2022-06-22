@@ -51,24 +51,28 @@ class PoliForm extends GetView<PoliController> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    if (controller.jenisPoli.value == "Poli KB" || controller.jenisPoli.value == "Poli KIA")
+                      CustomDropdown(
+                        label: "Pilih Bidan",
+                        hint: "Pilih Bidan",
+                        size: size,
+                        menuItems: controller.dokterList,
+                        onChangeValue: controller.onSelectedDokter,
+                      )
+                    else
+                      CustomDropdown(
+                        label: "Pilih Dokter",
+                        hint: "Pilih Dokter",
+                        size: size,
+                        menuItems: controller.dokterList,
+                        onChangeValue: controller.onSelectedDokter,
+                      ),
                     CustomDropdown(
-                      label: "Pilih Dokter",
-                      hint: "Pilih Dokter",
+                      label: "Pilih Jadwal",
+                      hint: "Pilih Jadwal",
                       size: size,
-                      menuItems: controller.dokterItems,
-                      onChangeValue: controller.onSelectDokter,
-                    ),
-                    DateField(
-                      label: "Atur Tanggal",
-                      icon: Icons.date_range_outlined,
-                      isDate: true,
-                      onSelected: controller.onSelectDate,
-                    ),
-                    DateField(
-                      label: "Atur Waktu",
-                      icon: Icons.access_time,
-                      isDate: false,
-                      onSelected: controller.onSelectTime,
+                      menuItems: controller.jadwalList,
+                      onChangeValue: controller.onSelectedJadwal,
                     ),
                     CustomButton(
                       size: size,
