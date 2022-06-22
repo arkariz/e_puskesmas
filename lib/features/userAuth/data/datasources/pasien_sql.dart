@@ -2,42 +2,46 @@ import 'package:e_puskesmas/core/utils/sql_helper.dart';
 import 'package:sqflite/sqflite.dart' as sql;
 import 'package:flutter/foundation.dart';
 
-// [ ] Revisi Pasien Field
+// [x] Revisi Pasien Field
 class PasienSql {
   // Create new Pasien
   static Future<int> createPasien(
     String statusPasien,
-    String namaLengkap,
     String email,
     String password,
+    String noRekamMedis,
+    String noBpjs,
+    String namaLengkap,
     String namaKK,
+    String tanggalLahir,
+    String tempatLahir,
+    String usia,
     String jenisKelamin,
-    String provinsi,
-    String kabupaten,
-    String kodePos,
     String detailAlamat,
-    String profilePath,
     String kkPath,
     String? ktpPath,
     String? bpjsPath,
+    String profilePath,
   ) async {
     final db = await SQLHelper.db();
 
     final data = {
       'status_pasien': statusPasien,
-      'nama_lengkap': namaLengkap,
       'email': email,
       'password': password,
+      'no_rekam_medis': noRekamMedis,
+      'no_bpjs': noBpjs,
+      'nama_lengkap': namaLengkap,
       'nama_kk': namaKK,
+      'tanggal_lahir': tanggalLahir,
+      'tempat_lahir':tempatLahir,
+      'usia': usia,
       'jenis_kelamin': jenisKelamin,
-      'provinsi': provinsi,
-      'kabupaten': kabupaten,
-      'kode_pos': kodePos,
       'detail_alamat': detailAlamat,
-      'foto_profile_path': profilePath,
       'kk_path': kkPath,
       'ktp_path': ktpPath,
       'bpjs_path': bpjsPath,
+      'foto_profile_path': profilePath,
     };
     final idPasien = await db.insert('pasien', data, conflictAlgorithm: sql.ConflictAlgorithm.replace);
     return idPasien;
@@ -76,37 +80,41 @@ class PasienSql {
   static Future<int> updatePasien(
     int idPasien,
     String statusPasien,
-    String namaLengkap,
     String email,
     String password,
+    String noRekamMedis,
+    String noBpjs,
+    String namaLengkap,
     String namaKK,
+    String tanggalLahir,
+    String tempatLahir,
+    String usia,
     String jenisKelamin,
-    String provinsi,
-    String kabupaten,
-    String kodePos,
     String detailAlamat,
-    String profilePath,
     String kkPath,
     String? ktpPath,
     String? bpjsPath,
+    String profilePath,
   ) async {
     final db = await SQLHelper.db();
 
     final data = {
       'status_pasien': statusPasien,
-      'nama_lengkap': namaLengkap,
       'email': email,
       'password': password,
+      'no_rekam_medis': noRekamMedis,
+      'no_bpjs': noBpjs,
+      'nama_lengkap': namaLengkap,
       'nama_kk': namaKK,
+      'tanggal_lahir': tanggalLahir,
+      'tempat_lahir':tempatLahir,
+      'usia': usia,
       'jenis_kelamin': jenisKelamin,
-      'provinsi': provinsi,
-      'kabupaten': kabupaten,
-      'kode_pos': kodePos,
       'detail_alamat': detailAlamat,
-      'foto_profile_path': profilePath,
       'kk_path': kkPath,
       'ktp_path': ktpPath,
       'bpjs_path': bpjsPath,
+      'foto_profile_path': profilePath,
     };
 
     final result = await db.update('pasien', data, where: "id_pasien = ?", whereArgs: [idPasien]);
