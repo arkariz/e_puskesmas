@@ -49,19 +49,21 @@ class LoginController extends GetxController {
         await prefs.setStringList('data_pasien', <String>[
           pasien.last['id_pasien'].toString(),
           pasien.last['status_pasien'],
-          pasien.last['nama_lengkap'],
           pasien.last['email'],
           pasien.last['password'],
+          pasien.last['no_rekam_medis'],
+          pasien.last['no_bpjs'],
+          pasien.last['nama_lengkap'],
           pasien.last['nama_kk'],
+          pasien.last['tanggal_lahir'],
+          pasien.last['tempat_lahir'],
+          pasien.last['usia'],
           pasien.last['jenis_kelamin'],
-          pasien.last['provinsi'],
-          pasien.last['kabupaten'],
-          pasien.last['kode_Pos'],
           pasien.last['detail_alamat'],
-          pasien.last['foto_profile_path'],
           pasien.last['kk_path'],
           pasien.last['ktp_path'],
           pasien.last['bpjs_path'],
+          pasien.last['foto_profile_path'],
         ]);
         Get.offNamed(Routes.NAV_BOTTOM);
       }

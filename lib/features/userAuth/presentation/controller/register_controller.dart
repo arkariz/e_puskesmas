@@ -10,16 +10,26 @@ class RegisterController extends GetxController {
   final emailController = TextEditingController().obs;
   final sandiController = TextEditingController().obs;
 
+  final noRekamMedisController = TextEditingController().obs;
+  final noBpjsController = TextEditingController().obs;
   final namaKKController = TextEditingController().obs;
+  final tanggalLahirController = TextEditingController().obs;
+  final tempatLahirController = TextEditingController().obs;
+  final usiaController = TextEditingController().obs;
 
-  final kodeposController = TextEditingController().obs;
   final detailAlamatController = TextEditingController().obs;
 
   final namaNode = FocusNode().obs;
   final emailNode = FocusNode().obs;
   final sandiNode = FocusNode().obs;
+
+  final noRekamMedisNode = FocusNode().obs;
+  final noBpjsNode = FocusNode().obs;
   final namaKKNode = FocusNode().obs;
-  final kodeposNode = FocusNode().obs;
+  final tanggalLahirNode = FocusNode().obs;
+  final tempatLahirNode = FocusNode().obs;
+  final usiaNode = FocusNode().obs;
+
   final detailAlamatNode = FocusNode().obs;
 
   final fotoKk = "".obs;
@@ -42,28 +52,6 @@ class RegisterController extends GetxController {
     genderValue(value);
   }
 
-  final List<String> provItems = [
-    'Kalimantan Tengah',
-    'Yogyakarta',
-  ].obs;
-
-  var provValue = "".obs;
-
-  void onSelectProv(String value) {
-    provValue(value);
-  }
-
-  final List<String> kabItems = [
-    'Sleman',
-    'Bantul',
-  ].obs;
-
-  var kabValue = "".obs;
-
-  void onSelectkab(String value) {
-    kabValue(value);
-  }
-
   @override
   void onInit() {
     if (args != null) {
@@ -78,23 +66,26 @@ class RegisterController extends GetxController {
     super.onInit();
   }
 
+  // [x] Revisi Pasien Field
   void createPasien() async {
     try {
       await PasienSql.createPasien(
         statusPasien.value,
-        namaController.value.text,
         emailController.value.text,
         sandiController.value.text,
+        noRekamMedisController.value.text,
+        noBpjsController.value.text,
+        namaController.value.text,
         namaKKController.value.text,
+        tanggalLahirController.value.text,
+        tempatLahirController.value.text,
+        usiaController.value.text,
         genderValue.value,
-        provValue.value,
-        kabValue.value,
-        kodeposController.value.text,
         detailAlamatController.value.text,
-        "profilePath",
         fotoKk.value,
         fotoKtp.value,
         fotoBpjs.value,
+        "profilePath",
       );
 
       if (isAdmin.value) {
