@@ -12,8 +12,10 @@ class DateField extends StatefulWidget {
     required this.icon,
     required this.isDate,
     required this.onSelected,
+    this.initialValue,
   }) : super(key: key);
 
+  final String? initialValue;
   final String label;
   final IconData icon;
   final bool isDate;
@@ -24,8 +26,14 @@ class DateField extends StatefulWidget {
 }
 
 class _DateFieldState extends State<DateField> {
-  DateTime selectedDate = DateTime.now();
+  late DateTime selectedDate;
   TimeOfDay selectedTime = TimeOfDay.now();
+
+  @override
+  void initState() {
+    selectedDate = widget.initialValue != null ? DateTime.parse(widget.initialValue!) : DateTime.now();
+    super.initState();
+  }
 
   void _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
@@ -37,32 +45,31 @@ class _DateFieldState extends State<DateField> {
     if (picked != null && picked != selectedDate) {
       setState(() {
         selectedDate = picked;
+        String formattedDate = DateFormat('yyyy-MM-dd').format(selectedDate);
+        widget.onSelected(formattedDate);
       });
-      String formattedDate = DateFormat('yyyy-MM-dd').format(picked);
-      widget.onSelected(formattedDate);
     }
   }
 
-  void _selectTime(BuildContext context) async {
-    final TimeOfDay? timeOfDay = await showTimePicker(
-      context: context,
-      initialTime: selectedTime,
-      initialEntryMode: TimePickerEntryMode.dial,
-    );
-    if (timeOfDay != null && timeOfDay != selectedTime) {
-      setState(() {
-        selectedTime = timeOfDay;
-      });
-    }
-  }
+  // void _selectTime(BuildContext context) async {
+  //   final TimeOfDay? timeOfDay = await showTimePicker(
+  //     context: context,
+  //     initialTime: selectedTime,
+  //     initialEntryMode: TimePickerEntryMode.dial,
+  //   );
+  //   if (timeOfDay != null && timeOfDay != selectedTime) {
+  //     setState(() {
+  //       selectedTime = timeOfDay;
+  //     });
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return GestureDetector(
       onTap: () {
-        widget.isDate ? _selectDate(context) : _selectTime(context);
-        widget.onSelected(selectedTime.format(context));
+        _selectDate(context);
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

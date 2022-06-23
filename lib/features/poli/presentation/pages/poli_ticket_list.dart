@@ -23,7 +23,22 @@ class PoliTicketListPage extends GetView<PoliTicketListController> {
               : Column(
                   children: [
                     SizedBox(height: size.height * 0.1),
-                    const H2Text(text: "Riwayat Pemeriksaan Anda", bold: true),
+                    controller.isLoginAs.value == "admin login"
+                        ? Row(
+                            children: [
+                              IconButton(
+                                onPressed: () {
+                                  Get.back();
+                                },
+                                icon: const Icon(Icons.arrow_back_ios_rounded),
+                              ),
+                              const H2Text(text: "Riwayat Pemeriksaan Pasien", bold: true),
+                            ],
+                          )
+                        : const H2Text(
+                            text: "Riwayat Pemeriksaan Anda",
+                            bold: true,
+                          ),
                     controller.listTicket.isEmpty
                         ? const Padding(
                             padding: EdgeInsets.only(top: 50),
@@ -34,7 +49,7 @@ class PoliTicketListPage extends GetView<PoliTicketListController> {
                             height: size.height * 0.9,
                             child: ListView.builder(
                               padding: EdgeInsets.only(
-                                top: kDefaultPadding * 2,
+                                top: kDefaultPadding,
                                 left: kDefaultPadding,
                                 right: kDefaultPadding,
                                 bottom: size.height * 0.15,

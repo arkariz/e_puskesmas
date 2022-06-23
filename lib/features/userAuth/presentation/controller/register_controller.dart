@@ -13,7 +13,6 @@ class RegisterController extends GetxController {
   final noRekamMedisController = TextEditingController().obs;
   final noBpjsController = TextEditingController().obs;
   final namaKKController = TextEditingController().obs;
-  final tanggalLahirController = TextEditingController().obs;
   final tempatLahirController = TextEditingController().obs;
   final usiaController = TextEditingController().obs;
 
@@ -32,6 +31,7 @@ class RegisterController extends GetxController {
 
   final detailAlamatNode = FocusNode().obs;
 
+  final tanggalLahir = "".obs;
   final fotoKk = "".obs;
   final fotoKtp = "".obs;
   final fotoBpjs = "".obs;
@@ -50,6 +50,10 @@ class RegisterController extends GetxController {
 
   void onSelectGender(String value) {
     genderValue(value);
+  }
+
+  void onSelectedTanggal(String value) {
+    tanggalLahir(value);
   }
 
   @override
@@ -77,7 +81,7 @@ class RegisterController extends GetxController {
         noBpjsController.value.text,
         namaController.value.text,
         namaKKController.value.text,
-        tanggalLahirController.value.text,
+        tanggalLahir.value,
         tempatLahirController.value.text,
         usiaController.value.text,
         genderValue.value,

@@ -2,6 +2,7 @@ import 'package:e_puskesmas/core/themes/theme_constant.dart';
 import 'package:e_puskesmas/core/widgets/custom_button.dart';
 import 'package:e_puskesmas/core/widgets/custom_dropdown.dart';
 import 'package:e_puskesmas/core/widgets/custom_textfield.dart';
+import 'package:e_puskesmas/core/widgets/date_field.dart';
 import 'package:e_puskesmas/core/widgets/h3_text.dart';
 import 'package:e_puskesmas/core/widgets/h5_text.dart';
 import 'package:e_puskesmas/features/admin/presentation/controller/update_controller.dart';
@@ -67,6 +68,7 @@ class UpdateBpjsForm extends GetView<UpdateController> {
                                 size: size,
                                 label: "No Rekam Medis",
                                 hint: "Masukkan No Rekam Medis",
+                                type: TextInputType.number,
                               ),
                               CustomTextField(
                                 controller: controller.noBpjsController.value,
@@ -74,6 +76,7 @@ class UpdateBpjsForm extends GetView<UpdateController> {
                                 size: size,
                                 label: "No BPJS",
                                 hint: "Masukkan No BPJS",
+                                type: TextInputType.number,
                               ),
                               CustomTextField(
                                 controller: controller.namaController.value,
@@ -89,12 +92,12 @@ class UpdateBpjsForm extends GetView<UpdateController> {
                                 label: "Nama Kartu Keluarga",
                                 hint: "Nama Kartu Keluarga",
                               ),
-                              CustomTextField(
-                                controller: controller.tanggalLahirController.value,
-                                node: controller.tanggalLahirNode.value,
-                                size: size,
+                              DateField(
+                                initialValue: controller.tanggalLahir.value,
                                 label: "Tanggal Lahir",
-                                hint: "Masukkan Tanggal Lahir",
+                                icon: Icons.date_range_outlined,
+                                isDate: true,
+                                onSelected: controller.onSelectedTanggal,
                               ),
                               CustomTextField(
                                 controller: controller.tempatLahirController.value,
@@ -109,9 +112,10 @@ class UpdateBpjsForm extends GetView<UpdateController> {
                                 size: size,
                                 label: "Usia",
                                 hint: "Masukkan Usia",
+                                type: TextInputType.number,
                               ),
                               CustomDropdown(
-                                label: "Jenis Kelamni",
+                                label: "Jenis Kelamin",
                                 hint: "Pilih Jenis Kelamin",
                                 size: size,
                                 menuItems: controller.menuItems,

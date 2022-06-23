@@ -11,7 +11,6 @@ class UpdateController extends GetxController {
   final noBpjsController = TextEditingController().obs;
 
   final namaKKController = TextEditingController().obs;
-  final tanggalLahirController = TextEditingController().obs;
   final tempatLahirController = TextEditingController().obs;
   final usiaController = TextEditingController().obs;
 
@@ -33,6 +32,7 @@ class UpdateController extends GetxController {
   final fotoKk = "".obs;
   final fotoKtp = "".obs;
   final fotoBpjs = "".obs;
+  final tanggalLahir = "".obs;
 
   final isLoading = true.obs;
 
@@ -41,9 +41,9 @@ class UpdateController extends GetxController {
   final args = Get.arguments;
 
   @override
-  void onInit() {
+  void onInit() async {
     if (args != null) {
-      getPasienById(args['id_pasien']);
+      await getPasienById(args['id_pasien']);
     }
     super.onInit();
   }
@@ -67,6 +67,10 @@ class UpdateController extends GetxController {
     return null;
   }
 
+  void onSelectedTanggal(String value) {
+    tanggalLahir(value);
+  }
+
   //[x] Update selected pasien
   void updatePasien() async {
     try {
@@ -79,7 +83,7 @@ class UpdateController extends GetxController {
         noBpjsController.value.text,
         namaController.value.text,
         namaKKController.value.text,
-        tanggalLahirController.value.text,
+        tanggalLahir.value,
         tempatLahirController.value.text,
         usiaController.value.text,
         genderValue.value,
@@ -98,10 +102,12 @@ class UpdateController extends GetxController {
   }
 
   //[x] Get user by id to initiate data for update
-  void getPasienById(int idPasien) async {
+  Future getPasienById(int idPasien) async {
     isLoading(true);
     final pasien = await PasienSql.getSinglePasienById(idPasien);
     dataPasien(pasien.last);
+    print("tess ${pasien.last["tanggal_lahir"]}");
+    print("tes di kurung ${dataPasien["tanggal_lahir"]}");
 
     emailController.value.text = dataPasien["email"];
     sandiController.value.text = dataPasien["password"];
@@ -109,7 +115,7 @@ class UpdateController extends GetxController {
     noBpjsController.value.text = dataPasien["no_bpjs"];
     namaController.value.text = dataPasien["nama_lengkap"];
     namaKKController.value.text = dataPasien["nama_kk"];
-    tanggalLahirController.value.text = dataPasien["tanggal_lahir"];
+    tanggalLahir.value = dataPasien["tanggal_lahir"];
     tempatLahirController.value.text = dataPasien["tempat_lahir"];
     usiaController.value.text = dataPasien["usia"];
 

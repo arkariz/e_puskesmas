@@ -57,7 +57,7 @@ class _SelectUserPageState extends State<SelectUserPage> {
             onPressed: () async {
               final prefs = await SharedPreferences.getInstance();
               await prefs.setString('isLogin', "logout");
-              Get.offNamed(Routes.LOGIN);
+              Get.offAllNamed(Routes.LOGIN);
             },
           ),
         ],

@@ -90,11 +90,17 @@ class PoliTickerScreen extends GetView<PoliTicketController> {
                 ),
               ),
               CustomButton(
-                  size: size,
-                  label: "Kembali",
-                  onPressed: () {
-                    Get.offNamed(Routes.NAV_BOTTOM);
-                  })
+                size: size,
+                label: "Kembali",
+                onPressed: () {
+                  controller.isLoginAs.value == "pasien login"
+                      ? Get.offNamedUntil(
+                          Routes.NAV_BOTTOM,
+                          ModalRoute.withName(Routes.HOME),
+                        )
+                      : Get.back();
+                },
+              )
             ],
           ),
         ),

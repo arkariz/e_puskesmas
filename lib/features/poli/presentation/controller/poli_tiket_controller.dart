@@ -1,5 +1,6 @@
 import 'package:e_puskesmas/features/poli/data/datasources/poli_sql.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class PoliTicketController extends GetxController {
   final args = Get.arguments;
@@ -11,8 +12,12 @@ class PoliTicketController extends GetxController {
   var jadwal = "".obs;
   var dokterValue = "".obs;
 
+  final isLoginAs = "".obs;
+
   @override
   void onInit() {
+    checkLoginAs();
+
     if (args != null) {
       if (args["id_poli"] != null) {
         getPoliById(args["id_poli"]);
@@ -29,8 +34,13 @@ class PoliTicketController extends GetxController {
     super.onInit();
   }
 
-  void getPoliById(int idPoli) async {
+  void checkLoginAs() async {
+    final prefs = await SharedPreferences.getInstance();
+    final String? isLogin = prefs.getString("isLogin");
+    isLoginAs(isLogin);
+  }
 
+  void getPoliById(int idPoli) async {
     final poli = await PoliSql.getSinglepoli(idPoli);
     kodeAntrian(poli.last["kode_antrian"]);
     jenisPoli(poli.last["jenis_poli"]);

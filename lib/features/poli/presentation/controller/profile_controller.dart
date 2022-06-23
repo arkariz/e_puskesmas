@@ -44,7 +44,7 @@ class ProfileController extends GetxController {
   void logout() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString('isLogin', "logout");
-    Get.offNamed(Routes.LOGIN);
+    Get.offAllNamed(Routes.LOGIN);
   }
   // [x] Revisi Pasien Field
 

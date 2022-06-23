@@ -6,12 +6,21 @@ class PoliTicketListController extends GetxController {
   final listTicket = List<Map<String, dynamic>>.empty().obs;
   final args = Get.arguments;
 
+  final isLoginAs = "".obs;
+
   final isLoading = false.obs;
 
   @override
   void onInit() {
+    checkLoginAs();
     getAllPoliByPasienId();
     super.onInit();
+  }
+
+  void checkLoginAs() async {
+    final prefs = await SharedPreferences.getInstance();
+    final String? isLogin = prefs.getString("isLogin");
+    isLoginAs(isLogin);
   }
 
   void getAllPoliByPasienId() async {
