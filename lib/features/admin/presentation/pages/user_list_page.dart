@@ -81,38 +81,53 @@ class UserListPage extends GetView<UserListController> {
                         padding: EdgeInsets.only(top: 50),
                         child: H1Text(text: "Belum Ada Pasien", bold: true),
                       )
-                    : ListView.builder(
-                        shrinkWrap: true,
-                        padding: const EdgeInsets.only(
-                          left: kDefaultPadding,
-                          right: kDefaultPadding,
-                        ),
-                        itemCount: controller.userList.length,
-                        itemBuilder: (context, index) {
-                          return ListTile(
-                            title: H3Text(
-                              text: "${controller.userList[index]["nama_lengkap"]}",
-                              bold: true,
+                    : SingleChildScrollView(
+                        child: SizedBox(
+                          width: size.width,
+                          height: size.height * 0.65,
+                          child: ListView.builder(
+                            shrinkWrap: true,
+                            padding: const EdgeInsets.only(
+                              left: kDefaultPadding,
+                              right: kDefaultPadding,
                             ),
-                            subtitle: H4Text(text: "${controller.userList[index]["email"]}", bold: false),
-                            shape: const Border(bottom: BorderSide(color: Colors.grey)),
-                            // [x] Get to user's Poli Ticket List Action Trigger
-                            onTap: () {
-                              Get.toNamed(
-                                Routes.LIST_POLI,
-                                arguments: {
-                                  "id_pasien": controller.userList[index]["id_pasien"],
-                                },
+                            itemCount: controller.userList.length,
+                            itemBuilder: (context, index) {
+                              return Column(
+                                children: [
+                                  ListTile(
+                                    title: H3Text(
+                                      text: "${controller.userList[index]["nama_lengkap"]}",
+                                      bold: true,
+                                    ),
+                                    subtitle: H4Text(text: "${controller.userList[index]["email"]}", bold: false),
+                                    // shape: const Border(bottom: BorderSide(color: Colors.grey)),
+                                    // [x] Get to user's Poli Ticket List Action Trigger
+                                    onTap: () {
+                                      Get.toNamed(
+                                        Routes.LIST_POLI,
+                                        arguments: {
+                                          "id_pasien": controller.userList[index]["id_pasien"],
+                                        },
+                                      );
+                                    },
+                                    trailing: GestureDetector(
+                                      child: const Icon(Icons.more_horiz_outlined),
+                                      onTap: () {
+                                        Get.dialog(pasienDialog(context, controller, index));
+                                      },
+                                    ),
+                                  ),
+                                  Container(
+                                    height: 1,
+                                    width: size.width * 0.8,
+                                    color: Colors.black26,
+                                  )
+                                ],
                               );
                             },
-                            trailing: GestureDetector(
-                              child: const Icon(Icons.more_horiz_outlined),
-                              onTap: () {
-                                Get.dialog(pasienDialog(context, controller, index));
-                              },
-                            ),
-                          );
-                        },
+                          ),
+                        ),
                       ),
               ],
             ),

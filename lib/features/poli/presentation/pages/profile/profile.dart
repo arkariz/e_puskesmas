@@ -10,7 +10,7 @@ import 'package:e_puskesmas/core/widgets/h4_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../controller/profile_controller.dart';
+import 'controller/profile_controller.dart';
 
 class ProfilePage extends GetView<ProfileController> {
   const ProfilePage({Key? key}) : super(key: key);
@@ -79,7 +79,21 @@ class ProfilePage extends GetView<ProfileController> {
                   size: size,
                   label: "Edit Profile",
                   onPressed: () {
-                    Get.toNamed(Routes.EDIT_PROFIL);
+                    if (controller.statusPasien.value == "Pasien Umum") {
+                      Get.toNamed(
+                        Routes.USER_UPDATE_PASIEN_UMUM,
+                        arguments: {
+                          "id_pasien": int.parse(controller.idPasien.value),
+                        },
+                      );
+                    } else {
+                      Get.toNamed(
+                        Routes.USER_UPDATE_PASIEN_BPJS,
+                        arguments: {
+                          "id_pasien": int.parse(controller.idPasien.value),
+                        },
+                      );
+                    }
                   },
                 ),
                 const SizedBox(height: kDefaultPadding),

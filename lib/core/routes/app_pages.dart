@@ -10,12 +10,14 @@ import 'package:e_puskesmas/features/poli/presentation/binding/home_binding.dart
 import 'package:e_puskesmas/features/poli/presentation/binding/navigation_binding.dart';
 import 'package:e_puskesmas/features/poli/presentation/binding/poli_binding.dart';
 import 'package:e_puskesmas/features/poli/presentation/binding/poli_ticket_binding.dart';
-import 'package:e_puskesmas/features/poli/presentation/pages/edit_profile_page.dart';
 import 'package:e_puskesmas/features/poli/presentation/pages/home_page.dart';
 import 'package:e_puskesmas/features/poli/presentation/pages/navigation_bottom.dart';
 import 'package:e_puskesmas/features/poli/presentation/pages/poli_form.dart';
 import 'package:e_puskesmas/features/poli/presentation/pages/poli_ticket.dart';
 import 'package:e_puskesmas/features/poli/presentation/pages/poli_ticket_list.dart';
+import 'package:e_puskesmas/features/poli/presentation/pages/profile/user_update_binding.dart';
+import 'package:e_puskesmas/features/poli/presentation/pages/profile/user_update_bpjs_form.dart';
+import 'package:e_puskesmas/features/poli/presentation/pages/profile/user_update_umum_form.dart';
 import 'package:e_puskesmas/features/userAuth/presentation/binding/auth_binding.dart';
 import 'package:e_puskesmas/features/userAuth/presentation/pages/login.dart';
 import 'package:e_puskesmas/features/userAuth/presentation/pages/register.dart';
@@ -69,9 +71,14 @@ class AppPages {
       binding: NavigationBottomBinding(),
     ),
     GetPage(
-      name: _Paths.EDIT_PROFIL,
-      page: () => EditProfilePage(),
-      binding: NavigationBottomBinding(),
+      name: _Paths.USER_UPDATE_PASIEN_BPJS,
+      page: () => UserUpdateBpjsForm(),
+      binding: UserUpdateBinding(),
+    ),
+    GetPage(
+      name: _Paths.USER_UPDATE_PASIEN_UMUM,
+      page: () => UserUpdateUmumForm(),
+      binding: UserUpdateBinding(),
     ),
     GetPage(
       name: _Paths.LIST_POLI,

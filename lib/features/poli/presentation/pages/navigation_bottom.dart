@@ -1,7 +1,7 @@
 import 'package:e_puskesmas/features/poli/presentation/controller/navigation_controller.dart';
 import 'package:e_puskesmas/features/poli/presentation/pages/home_page.dart';
 import 'package:e_puskesmas/features/poli/presentation/pages/poli_ticket_list.dart';
-import 'package:e_puskesmas/features/poli/presentation/pages/profile.dart';
+import 'package:e_puskesmas/features/poli/presentation/pages/profile/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

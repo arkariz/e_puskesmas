@@ -93,46 +93,46 @@ class ProfileController extends GetxController {
     // }
   }
 
-  void updateDataPasien() async {
-    try {
-      final prefs = await SharedPreferences.getInstance();
+  // void updateDataPasien() async {
+  //   try {
+  //     final prefs = await SharedPreferences.getInstance();
 
-      final List<String>? pasienCache = prefs.getStringList('pasien');
-      final pasien = await PasienSql.getSinglePasienById(int.parse(pasienCache![0]));
+  //     final List<String>? pasienCache = prefs.getStringList('pasien');
+  //     final pasien = await PasienSql.getSinglePasienById(int.parse(pasienCache![0]));
 
-      await PasienSql.updatePasien(
-        pasien.last["id_pasien"],
-        pasien.last['status_pasien'],
-        emailTextController.value.text,
-        pasien.last['password'],
-        pasien.last['no_rekam_medis'],
-        pasien.last['no_bpjs'],
-        namaTextController.value.text,
-        pasien.last['nama_kk'],
-        pasien.last['tanggal_lahir'],
-        pasien.last['tempat_lahir'],
-        pasien.last['usia'],
-        pasien.last['jenis_kelamin'],
-        pasien.last['detail_alamat'],
-        pasien.last['kk_path'],
-        pasien.last['ktp_path'],
-        pasien.last['bpjs_path'],
-        pasien.last['foto_profile_path'],
-      );
+  //     await PasienSql.updatePasien(
+  //       pasien.last["id_pasien"],
+  //       pasien.last['status_pasien'],
+  //       emailTextController.value.text,
+  //       pasien.last['password'],
+  //       pasien.last['no_rekam_medis'],
+  //       pasien.last['no_bpjs'],
+  //       namaTextController.value.text,
+  //       pasien.last['nama_kk'],
+  //       pasien.last['tanggal_lahir'],
+  //       pasien.last['tempat_lahir'],
+  //       pasien.last['usia'],
+  //       pasien.last['jenis_kelamin'],
+  //       pasien.last['detail_alamat'],
+  //       pasien.last['kk_path'],
+  //       pasien.last['ktp_path'],
+  //       pasien.last['bpjs_path'],
+  //       pasien.last['foto_profile_path'],
+  //     );
 
-      await prefs.setStringList('pasien', <String>[
-        pasien.last["id_pasien"].toString(),
-        namaTextController.value.text,
-        pasien.last["status_pasien"],
-        emailTextController.value.text,
-        pasien.last["foto_profile_path"],
-      ]);
+  //     await prefs.setStringList('pasien', <String>[
+  //       pasien.last["id_pasien"].toString(),
+  //       namaTextController.value.text,
+  //       pasien.last["status_pasien"],
+  //       emailTextController.value.text,
+  //       pasien.last["foto_profile_path"],
+  //     ]);
 
-      getPasien();
-      homeController.getPasien();
-      Get.back();
-    } catch (e) {
-      Get.snackbar("Profile", "Terjadi Kesalahan");
-    }
-  }
+  //     getPasien();
+  //     homeController.getPasien();
+  //     Get.back();
+  //   } catch (e) {
+  //     Get.snackbar("Profile", "Terjadi Kesalahan");
+  //   }
+  // }
 }

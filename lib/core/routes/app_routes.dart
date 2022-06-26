@@ -15,8 +15,10 @@ abstract class Routes {
   static const POLI_TICKET = _Paths.POLI_TICKET;
 
   static const NAV_BOTTOM = _Paths.NAV_BOTTOM;
-  static const EDIT_PROFIL = _Paths.EDIT_PROFIL;
   static const LIST_POLI = _Paths.LIST_POLI;
+  
+  static const USER_UPDATE_PASIEN_BPJS = _Paths.USER_UPDATE_PASIEN_BPJS;
+  static const USER_UPDATE_PASIEN_UMUM = _Paths.USER_UPDATE_PASIEN_UMUM;
 
   static const PILIH_PASIEN = _Paths.PILIH_PASIEN;
   static const LIST_USER = _Paths.LIST_USER;
@@ -35,8 +37,10 @@ abstract class _Paths {
   static const POLI_FORM = '/poli_form';
   static const POLI_TICKET = '/poli_ticket';
   static const NAV_BOTTOM = '/nav_bottom';
-  static const EDIT_PROFIL = '/edit_profile';
   static const LIST_POLI = '/list_poli';
+  
+  static const USER_UPDATE_PASIEN_BPJS = '/user_update_pasien_bpjs';
+  static const USER_UPDATE_PASIEN_UMUM = '/user_update_pasien_umum';
 
   static const PILIH_PASIEN = '/pilih_pasien';
   static const LIST_USER = '/list_user';
