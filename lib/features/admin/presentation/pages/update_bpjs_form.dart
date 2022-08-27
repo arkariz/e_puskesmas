@@ -48,8 +48,8 @@ class UpdateBpjsForm extends GetView<UpdateController> {
                                 controller: controller.emailController.value,
                                 node: controller.emailNode.value,
                                 size: size,
-                                label: "Email",
-                                hint: "Masukkan Emali",
+                                label: "Uername",
+                                hint: "Masukkan Username",
                               ),
                               CustomTextField(
                                 controller: controller.sandiController.value,
@@ -62,14 +62,6 @@ class UpdateBpjsForm extends GetView<UpdateController> {
                               ),
                               const H3Text(text: "Data diri", bold: true),
                               const SizedBox(height: kDefaultPadding),
-                              CustomTextField(
-                                controller: controller.noRekamMedisController.value,
-                                node: controller.noRekamMedisNode.value,
-                                size: size,
-                                label: "No Rekam Medis",
-                                hint: "Masukkan No Rekam Medis",
-                                type: TextInputType.number,
-                              ),
                               CustomTextField(
                                 controller: controller.noBpjsController.value,
                                 node: controller.noBpjsNode.value,
@@ -84,13 +76,6 @@ class UpdateBpjsForm extends GetView<UpdateController> {
                                 size: size,
                                 label: "Nama Lengkap",
                                 hint: "Masukkan Nama",
-                              ),
-                              CustomTextField(
-                                controller: controller.namaKKController.value,
-                                node: controller.namaKKNode.value,
-                                size: size,
-                                label: "Nama Kartu Keluarga",
-                                hint: "Nama Kartu Keluarga",
                               ),
                               DateField(
                                 initialValue: controller.tanggalLahir.value,

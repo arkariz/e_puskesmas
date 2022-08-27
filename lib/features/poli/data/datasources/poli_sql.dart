@@ -4,7 +4,15 @@ import 'package:flutter/foundation.dart';
 
 class PoliSql {
   // Create new poli
-  static Future<int> createpoli(String kodeAntrian, String jenisPoli, String namaPasien, String jenisPasien, String dokter, String jadwal, int idPasien) async {
+  static Future<int> createpoli(
+    String kodeAntrian,
+    String jenisPoli,
+    String namaPasien,
+    String jenisPasien,
+    String dokter,
+    String jadwal,
+    int idPasien,
+  ) async {
     final db = await SQLHelper.db();
 
     final data = {

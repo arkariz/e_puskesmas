@@ -31,7 +31,7 @@ class NavigationBottom extends GetView<NavigationBottomController> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             navBarItem(context, Icons.home, "Home", 0),
-            navBarItem(context, Icons.analytics_rounded, "Ticket", 1),
+            navBarItem(context, Icons.analytics_rounded, "Riwayat", 1),
             navBarItem(context, Icons.person, "Profile", 2),
           ],
         ),

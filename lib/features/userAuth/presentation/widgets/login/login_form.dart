@@ -29,8 +29,8 @@ class LoginForm extends StatelessWidget {
           controller: _emailController,
           node: _emailNode,
           size: size,
-          label: "Email",
-          hint: "Masukkan Email",
+          label: "Username",
+          hint: "Masukkan Username",
           type: TextInputType.emailAddress,
         ),
         CustomTextField(

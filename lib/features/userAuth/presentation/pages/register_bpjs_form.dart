@@ -47,8 +47,8 @@ class RegisterBpjsForm extends GetView<RegisterController> {
                           controller: controller.emailController.value,
                           node: controller.emailNode.value,
                           size: size,
-                          label: "Email",
-                          hint: "Masukkan Emali",
+                          label: "Username",
+                          hint: "Masukkan Username",
                         ),
                         CustomTextField(
                           controller: controller.sandiController.value,
@@ -61,14 +61,6 @@ class RegisterBpjsForm extends GetView<RegisterController> {
                         ),
                         const H3Text(text: "Data diri", bold: true),
                         const SizedBox(height: kDefaultPadding),
-                        CustomTextField(
-                          controller: controller.noRekamMedisController.value,
-                          node: controller.noRekamMedisNode.value,
-                          size: size,
-                          label: "No Rekam Medis",
-                          hint: "Masukkan No Rekam Medis",
-                          type: TextInputType.number,
-                        ),
                         CustomTextField(
                           controller: controller.noBpjsController.value,
                           node: controller.noBpjsNode.value,
@@ -83,13 +75,6 @@ class RegisterBpjsForm extends GetView<RegisterController> {
                           size: size,
                           label: "Nama Lengkap",
                           hint: "Masukkan Nama",
-                        ),
-                        CustomTextField(
-                          controller: controller.namaKKController.value,
-                          node: controller.namaKKNode.value,
-                          size: size,
-                          label: "Nama Kartu Keluarga",
-                          hint: "Nama Kartu Keluarga",
                         ),
                         DateField(
                           label: "Tanggal Lahir",

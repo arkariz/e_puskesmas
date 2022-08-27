@@ -7,10 +7,8 @@ class SQLHelper {
         status_pasien TEXT,
         email TEXT,
         password TEXT,
-        no_rekam_medis TEXT,
         no_bpjs TEXT,
         nama_lengkap TEXT,
-        nama_kk TEXT,
         tanggal_lahir TEXT,
         tempat_lahir TEXT,
         usia TEXT,
@@ -39,7 +37,7 @@ class SQLHelper {
   static Future<sql.Database> db() async {
     return sql.openDatabase(
       'puskesmas.db',
-      version: 6,
+      version: 7,
       onCreate: (sql.Database database, int version) async {
         await createTables(database);
       },

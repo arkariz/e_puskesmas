@@ -10,9 +10,7 @@ class RegisterController extends GetxController {
   final emailController = TextEditingController().obs;
   final sandiController = TextEditingController().obs;
 
-  final noRekamMedisController = TextEditingController().obs;
   final noBpjsController = TextEditingController().obs;
-  final namaKKController = TextEditingController().obs;
   final tempatLahirController = TextEditingController().obs;
   final usiaController = TextEditingController().obs;
 
@@ -77,10 +75,8 @@ class RegisterController extends GetxController {
         statusPasien.value,
         emailController.value.text,
         sandiController.value.text,
-        noRekamMedisController.value.text,
         noBpjsController.value.text,
         namaController.value.text,
-        namaKKController.value.text,
         tanggalLahir.value,
         tempatLahirController.value.text,
         usiaController.value.text,

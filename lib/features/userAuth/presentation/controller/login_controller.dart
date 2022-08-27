@@ -20,7 +20,7 @@ class LoginController extends GetxController {
   void loginPasien() async {
     try {
       if (emailController.value.text == "" || sandiController.value.text == "") {
-        throw Exception("Email dan Password Harus diisi");
+        throw Exception("Username dan Password Harus diisi");
       }
 
       if (emailController.value.text == "admin" || sandiController.value.text == "admin") {
@@ -51,10 +51,8 @@ class LoginController extends GetxController {
           pasien.last['status_pasien'],
           pasien.last['email'],
           pasien.last['password'],
-          pasien.last['no_rekam_medis'],
           pasien.last['no_bpjs'],
           pasien.last['nama_lengkap'],
-          pasien.last['nama_kk'],
           pasien.last['tanggal_lahir'],
           pasien.last['tempat_lahir'],
           pasien.last['usia'],

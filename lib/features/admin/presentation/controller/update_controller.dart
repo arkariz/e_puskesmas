@@ -7,10 +7,8 @@ class UpdateController extends GetxController {
   final namaController = TextEditingController().obs;
   final emailController = TextEditingController().obs;
   final sandiController = TextEditingController().obs;
-  final noRekamMedisController = TextEditingController().obs;
   final noBpjsController = TextEditingController().obs;
 
-  final namaKKController = TextEditingController().obs;
   final tempatLahirController = TextEditingController().obs;
   final usiaController = TextEditingController().obs;
 
@@ -79,10 +77,8 @@ class UpdateController extends GetxController {
         dataPasien["status_pasien"],
         emailController.value.text,
         sandiController.value.text,
-        noRekamMedisController.value.text,
         noBpjsController.value.text,
         namaController.value.text,
-        namaKKController.value.text,
         tanggalLahir.value,
         tempatLahirController.value.text,
         usiaController.value.text,
@@ -111,10 +107,8 @@ class UpdateController extends GetxController {
 
     emailController.value.text = dataPasien["email"];
     sandiController.value.text = dataPasien["password"];
-    noRekamMedisController.value.text = dataPasien["no_rekam_medis"];
     noBpjsController.value.text = dataPasien["no_bpjs"];
     namaController.value.text = dataPasien["nama_lengkap"];
-    namaKKController.value.text = dataPasien["nama_kk"];
     tanggalLahir.value = dataPasien["tanggal_lahir"];
     tempatLahirController.value.text = dataPasien["tempat_lahir"];
     usiaController.value.text = dataPasien["usia"];
