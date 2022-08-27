@@ -13,12 +13,14 @@ class DateField extends StatefulWidget {
     required this.isDate,
     required this.onSelected,
     this.initialValue,
+    this.isPoli,
   }) : super(key: key);
 
   final String? initialValue;
   final String label;
   final IconData icon;
   final bool isDate;
+  final bool? isPoli;
   final void Function(String) onSelected;
 
   @override
@@ -39,13 +41,13 @@ class _DateFieldState extends State<DateField> {
     final DateTime? picked = await showDatePicker(
       context: context,
       initialDate: selectedDate, // Refer step 1
-      firstDate: DateTime(2000),
+      firstDate: widget.isPoli != null ? selectedDate : DateTime(2000),
       lastDate: DateTime(2025),
     );
     if (picked != null && picked != selectedDate) {
       setState(() {
         selectedDate = picked;
-        String formattedDate = DateFormat('yyyy-MM-dd').format(selectedDate);
+        String formattedDate = DateFormat('EEE, yyyy-MM-dd', "id_ID").format(selectedDate);
         widget.onSelected(formattedDate);
       });
     }
@@ -88,7 +90,7 @@ class _DateFieldState extends State<DateField> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 H4Text(
-                  text: widget.isDate ? DateFormat('yyyy-MM-dd').format(selectedDate) : selectedTime.format(context),
+                  text: widget.isDate ? DateFormat('EEE, yyyy-MM-dd', "id_ID").format(selectedDate) : selectedTime.format(context),
                   bold: false,
                   textColor: Colors.black54,
                 ),

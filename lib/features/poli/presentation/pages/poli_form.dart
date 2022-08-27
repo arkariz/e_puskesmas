@@ -67,12 +67,12 @@ class PoliForm extends GetView<PoliController> {
                         menuItems: controller.dokterList,
                         onChangeValue: controller.onSelectedDokter,
                       ),
-                    CustomDropdown(
+                    DateField(
                       label: "Pilih Jadwal",
-                      hint: "Pilih Jadwal",
-                      size: size,
-                      menuItems: controller.jadwalList,
-                      onChangeValue: controller.onSelectedJadwal,
+                      icon: Icons.date_range_outlined,
+                      isDate: true,
+                      isPoli: true,
+                      onSelected: controller.onSelectedJadwal,
                     ),
                     CustomButton(
                       size: size,
