@@ -9,6 +9,8 @@ class UserListController extends GetxController {
   final namaPasien = TextEditingController().obs;
   final namaPasienNode = FocusNode().obs;
 
+  final activeMenu = "user".obs;
+
   final args = Get.arguments;
 
   @override
@@ -18,6 +20,10 @@ class UserListController extends GetxController {
       jenisPasien(args["jenis_pasien"]);
     }
     super.onInit();
+  }
+
+  void changeActiveMenu(String menu) {
+    activeMenu(menu);
   }
 
   // [x] Get all pasien Function
