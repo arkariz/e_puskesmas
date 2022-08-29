@@ -34,6 +34,12 @@ class PoliSql {
     return db.query('poli', orderBy: "id_poli");
   }
 
+  // Read poli by jenis pasien
+  static Future<List<Map<String, dynamic>>> getPoliByJenisPasien(String jenisPasien) async {
+    final db = await SQLHelper.db();
+    return db.query('poli', where: "jenis_pasien = ?", whereArgs: [jenisPasien], orderBy: "jadwal");
+  }
+
   static Future<List<Map<String, dynamic>>> getPoliByPasienId(int idPasien) async {
     final db = await SQLHelper.db();
     return db.query('poli', where: "id_pasien = ?", whereArgs: [idPasien]);

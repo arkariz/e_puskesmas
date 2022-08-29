@@ -144,7 +144,10 @@ class UserListPage extends GetView<UserListController> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               GestureDetector(
-                                onTap: () => Get.toNamed(Routes.LIST_POLI_ADMIN, arguments: {"jenis_poli": "Poli Umum"}),
+                                onTap: () => Get.toNamed(Routes.LIST_POLI_ADMIN, arguments: {
+                                  "jenis_poli": "Poli Umum",
+                                  "jenis_pasien": controller.jenisPasien.value,
+                                }),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -160,7 +163,10 @@ class UserListPage extends GetView<UserListController> {
                               ),
                               const SizedBox(height: 24),
                               GestureDetector(
-                                onTap: () => Get.toNamed(Routes.LIST_POLI_ADMIN, arguments: {"jenis_poli": "Poli KB"}),
+                                onTap: () => Get.toNamed(Routes.LIST_POLI_ADMIN, arguments: {
+                                  "jenis_poli": "Poli KB",
+                                  "jenis_pasien": controller.jenisPasien.value,
+                                }),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -176,7 +182,10 @@ class UserListPage extends GetView<UserListController> {
                               ),
                               const SizedBox(height: 24),
                               GestureDetector(
-                                onTap: () => Get.toNamed(Routes.LIST_POLI_ADMIN, arguments: {"jenis_poli": "Poli Anak"}),
+                                onTap: () => Get.toNamed(Routes.LIST_POLI_ADMIN, arguments: {
+                                  "jenis_poli": "Poli Anak",
+                                  "jenis_pasien": controller.jenisPasien.value,
+                                }),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -192,7 +201,10 @@ class UserListPage extends GetView<UserListController> {
                               ),
                               const SizedBox(height: 24),
                               GestureDetector(
-                                onTap: () => Get.toNamed(Routes.LIST_POLI_ADMIN, arguments: {"jenis_poli": "Poli KIA"}),
+                                onTap: () => Get.toNamed(Routes.LIST_POLI_ADMIN, arguments: {
+                                  "jenis_poli": "Poli KIA",
+                                  "jenis_pasien": controller.jenisPasien.value,
+                                }),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [

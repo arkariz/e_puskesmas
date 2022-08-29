@@ -11,6 +11,8 @@ class PoliListController extends GetxController {
   set namaPasienNode(value) => _namaPasienNode.value = value;
   FocusNode get namaPasienNode => _namaPasienNode.value;
 
+  final jenisPasien = "".obs;
+
   final poliList = List<Map<String, dynamic>>.empty().obs;
 
   final jenisPoli = "".obs;
@@ -22,14 +24,15 @@ class PoliListController extends GetxController {
   @override
   void onInit() {
     if (args["jenis_poli"] != null) {
-      getAllPoli(args["jenis_poli"]);
       jenisPoli(args["jenis_poli"]);
+      jenisPasien(args["jenis_pasien"]);
+      getAllPoli(args["jenis_poli"]);
     }
     super.onInit();
   }
 
   Future getAllPoli(String jenisPoli) async {
-    final poli = await PoliSql.getpoli();
+    final poli = await PoliSql.getPoliByJenisPasien(jenisPasien.value);
     final tempPoli = List<Map<String, dynamic>>.empty(growable: true);
 
     for (var element in poli) {
