@@ -33,7 +33,7 @@ class _DateFieldState extends State<DateField> {
 
   @override
   void initState() {
-    selectedDate = widget.initialValue != null ? DateTime.parse(widget.initialValue!) : DateTime.now();
+    selectedDate = widget.initialValue != null ? DateTime.parse(widget.initialValue!.substring(5)) : DateTime.now();
     super.initState();
   }
 
