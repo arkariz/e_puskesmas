@@ -40,6 +40,12 @@ class PoliSql {
     return db.query('poli', where: "jenis_pasien = ?", whereArgs: [jenisPasien], orderBy: "jadwal");
   }
 
+  //Read poli by kode antrian
+  static Future<List<Map<String, dynamic>>> getPoliByAntrian(String kodeAntrian) async {
+    final db = await SQLHelper.db();
+    return db.query('poli', where: "kode_antrian = ?", whereArgs: [kodeAntrian]);
+  }
+
   static Future<List<Map<String, dynamic>>> getPoliByPasienId(int idPasien) async {
     final db = await SQLHelper.db();
     return db.query('poli', where: "id_pasien = ?", whereArgs: [idPasien]);
@@ -53,7 +59,6 @@ class PoliSql {
 
   // Update an item by nim
   static Future<int> updatepoli(
-    int idpoli,
     String kodeAntrian,
     String jenisPoli,
     String namaPasien,
@@ -66,13 +71,13 @@ class PoliSql {
     final data = {
       'kode_antrian': kodeAntrian,
       'jenis_poli': jenisPoli,
-      'nama_lengkap': namaPasien,
+      'nama_pasien': namaPasien,
       'jenis_pasien': jenisPasien,
       'dokter': dokter,
       'jadwal': jadwal,
     };
 
-    final result = await db.update('poli', data, where: "id_poli = ?", whereArgs: [idpoli]);
+    final result = await db.update('poli', data, where: "kode_antrian = ?", whereArgs: [kodeAntrian]);
     return result;
   }
 

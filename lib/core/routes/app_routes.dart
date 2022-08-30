@@ -23,6 +23,8 @@ abstract class Routes {
   static const PILIH_PASIEN = _Paths.PILIH_PASIEN;
   static const LIST_USER = _Paths.LIST_USER;
   static const LIST_POLI_ADMIN = _Paths.LIST_POLI_ADMIN;
+  static const UPDATE_POLI = _Paths.UPDATE_POLI;
+
   static const UPDATE_PASIEN_BPJS = _Paths.UPDATE_PASIEN_BPJS;
   static const UPDATE_PASIEN_UMUM = _Paths.UPDATE_PASIEN_UMUM;
 }
@@ -46,6 +48,8 @@ abstract class _Paths {
   static const PILIH_PASIEN = '/pilih_pasien';
   static const LIST_USER = '/list_user';
   static const LIST_POLI_ADMIN = '/list_poli_admin';
+  static const UPDATE_POLI = '/update_poli';
+
   static const UPDATE_PASIEN_BPJS = '/update_pasien_bpjs';
   static const UPDATE_PASIEN_UMUM = '/update_pasien_umum';
 }

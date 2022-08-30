@@ -102,8 +102,6 @@ class UpdateController extends GetxController {
     isLoading(true);
     final pasien = await PasienSql.getSinglePasienById(idPasien);
     dataPasien(pasien.last);
-    print("tess ${pasien.last["tanggal_lahir"]}");
-    print("tes di kurung ${dataPasien["tanggal_lahir"]}");
 
     emailController.value.text = dataPasien["email"];
     sandiController.value.text = dataPasien["password"];

@@ -1,10 +1,12 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:e_puskesmas/features/admin/presentation/binding/poli_list_admin_binding.dart';
+import 'package:e_puskesmas/features/admin/presentation/binding/update_poli_binding.dart';
 import 'package:e_puskesmas/features/admin/presentation/binding/update_user_binding.dart';
 import 'package:e_puskesmas/features/admin/presentation/binding/user_list_binding.dart';
 import 'package:e_puskesmas/features/admin/presentation/pages/select_user_page.dart';
 import 'package:e_puskesmas/features/admin/presentation/pages/update_bpjs_form.dart';
+import 'package:e_puskesmas/features/admin/presentation/pages/update_poli_form.dart';
 import 'package:e_puskesmas/features/admin/presentation/pages/update_umum_form.dart';
 import 'package:e_puskesmas/features/admin/presentation/pages/user_list_page.dart';
 import 'package:e_puskesmas/features/admin/presentation/widgets/poli_list_widget.dart';
@@ -95,7 +97,12 @@ class AppPages {
     GetPage(
       name: _Paths.LIST_POLI_ADMIN,
       page: () => PoliListWidget(),
-      binding: PoliListAdminBinding()
+      binding: PoliListAdminBinding(),
+    ),
+    GetPage(
+      name: _Paths.UPDATE_POLI,
+      page: () => UpdatePoliForm(),
+      binding: UpdatePoliBinding(),
     ),
     GetPage(
       name: _Paths.PILIH_PASIEN,

@@ -114,19 +114,13 @@ class PoliList extends StatelessWidget {
                     // shape: const Border(bottom: BorderSide(color: Colors.grey)),
                     // [x] Get to user's Poli Ticket List Action Trigger
                     onTap: () {
-                      Get.toNamed(
-                        Routes.LIST_POLI,
+                      Get.offNamed(
+                        Routes.UPDATE_POLI,
                         arguments: {
-                          "id_pasien": controller.poliList[index]["id_pasien"],
+                          "kode_antrian": controller.poliList[index]["kode_antrian"],
                         },
                       );
                     },
-                    trailing: GestureDetector(
-                      child: const Icon(Icons.more_horiz_outlined),
-                      onTap: () {
-                        // Get.dialog(pasienDialog(context, controller, index));
-                      },
-                    ),
                   ),
                   Container(
                     height: 1,
